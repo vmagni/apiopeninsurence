@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Caixa.ApiOpenInsurence.CanaisAtendimento.Api.Controllers
+namespace Caixa.OpenInsurence.CanaisAtendimento.Controllers
 {
     [ApiController]
     [Route("[controller]")]

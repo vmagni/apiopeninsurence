@@ -1,6 +1,6 @@
 using System;
 
-namespace Caixa.ApiOpenInsurence.CanaisAtendimento.Api
+namespace Caixa.OpenInsurence.CanaisAtendimento
 {
     public class WeatherForecast
     {

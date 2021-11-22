@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Caixa.ApiOpenInsurence.CanaisAtendimento.Api
+namespace Caixa.OpenInsurence.Channels.Api
 {
     public class Program
     {

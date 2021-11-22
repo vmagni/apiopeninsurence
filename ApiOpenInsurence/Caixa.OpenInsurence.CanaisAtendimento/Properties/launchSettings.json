@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61022",
-      "sslPort": 44392
+      "applicationUrl": "http://localhost:29114",
+      "sslPort": 44343
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Caixa.ApiOpenInsurence.CanaisAtendimento.Api": {
+    "Caixa.OpenInsurence.CanaisAtendimento": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

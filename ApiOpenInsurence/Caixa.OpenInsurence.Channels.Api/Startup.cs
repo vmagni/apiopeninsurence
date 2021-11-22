@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Caixa.ApiOpenInsurence.CanaisAtendimento.Api
+namespace Caixa.OpenInsurence.Channels.Api
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace Caixa.ApiOpenInsurence.CanaisAtendimento.Api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Caixa.ApiOpenInsurence.CanaisAtendimento.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Caixa.OpenInsurence.Channels.Api", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace Caixa.ApiOpenInsurence.CanaisAtendimento.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Caixa.ApiOpenInsurence.CanaisAtendimento.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Caixa.OpenInsurence.Channels.Api v1"));
             }
 
             app.UseHttpsRedirection();

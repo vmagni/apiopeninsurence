@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caixa.ApiOpenInsurence.CanaisAtendimento.Api", "Caixa.ApiOpenInsurence.CanaisAtendimento.Api\Caixa.ApiOpenInsurence.CanaisAtendimento.Api.csproj", "{49AFB530-70A3-4A3A-8933-C8C6F7719362}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caixa.OpenInsurence.Service", "Caixa.OpenInsurence.Service\Caixa.OpenInsurence.Service.csproj", "{A2864938-3E8C-423B-A9BC-B6E96DDACFCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caixa.OpenInsurence.Data", "Caixa.OpenInsurence.Data\Caixa.OpenInsurence.Data.csproj", "{86D161E7-BBB0-463A-BFD3-E81E91610474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caixa.OpenInsurence.Model", "Caixa.OpenInsurence.Model\Caixa.OpenInsurence.Model.csproj", "{D4BF16FC-6F50-4A0E-89A6-B918881B3099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caixa.OpenInsurence.Channels.Api", "Caixa.OpenInsurence.Channels.Api\Caixa.OpenInsurence.Channels.Api.csproj", "{7FDA6977-C1D5-4995-9BC4-CDF9EFDA7E46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{49AFB530-70A3-4A3A-8933-C8C6F7719362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49AFB530-70A3-4A3A-8933-C8C6F7719362}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49AFB530-70A3-4A3A-8933-C8C6F7719362}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49AFB530-70A3-4A3A-8933-C8C6F7719362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2864938-3E8C-423B-A9BC-B6E96DDACFCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2864938-3E8C-423B-A9BC-B6E96DDACFCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2864938-3E8C-423B-A9BC-B6E96DDACFCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2864938-3E8C-423B-A9BC-B6E96DDACFCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86D161E7-BBB0-463A-BFD3-E81E91610474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86D161E7-BBB0-463A-BFD3-E81E91610474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86D161E7-BBB0-463A-BFD3-E81E91610474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86D161E7-BBB0-463A-BFD3-E81E91610474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4BF16FC-6F50-4A0E-89A6-B918881B3099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4BF16FC-6F50-4A0E-89A6-B918881B3099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4BF16FC-6F50-4A0E-89A6-B918881B3099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4BF16FC-6F50-4A0E-89A6-B918881B3099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FDA6977-C1D5-4995-9BC4-CDF9EFDA7E46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDA6977-C1D5-4995-9BC4-CDF9EFDA7E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDA6977-C1D5-4995-9BC4-CDF9EFDA7E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDA6977-C1D5-4995-9BC4-CDF9EFDA7E46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
