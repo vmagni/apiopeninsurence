@@ -25,23 +25,23 @@ namespace Caixa.OpenInsurence.Channels.Api.Controllers
 
         [HttpPost]
         [Route("branches")]
-        public ActionResult<BranchesResponse> Branches([FromBody] ChannelsRequest request)
+        public ActionResult<BranchChannelResponse> Branches([FromBody] ChannelsRequest request)
         {
-            return Ok(new BranchesResponse());
+            return Ok(new BranchChannelResponse());
         }
 
         [HttpPost]
         [Route("eletronic")]
-        public ActionResult<BranchesResponse> EletronicChannels([FromBody] ChannelsRequest request)
+        public ActionResult<ElectronicChannelResponse> EletronicChannels([FromBody] ChannelsRequest request)
         {
-            return Ok(new BranchesResponse());
+            return Ok(new ElectronicChannelResponse());
         }
 
         [HttpPost]
         [Route("phone")]
-        public ActionResult<BranchesResponse> PhoneChannels([FromBody] ChannelsRequest request)
+        public ActionResult<PhoneChannelResponse> PhoneChannels([FromBody] ChannelsRequest request)
         {
-            return Ok(new BranchesResponse());
+            return Ok(new PhoneChannelResponse());
         }
     }
 }

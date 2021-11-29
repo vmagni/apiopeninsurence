@@ -1,14 +1,12 @@
 ﻿using Caixa.OpenInsurence.Model.Enums.Channel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Model.Data.Channel
 {
-    public class BranchServices
+    public class PhoneChannelServices
     {
         [JsonIgnore]
         public ServicesEnum Type { get; set; }

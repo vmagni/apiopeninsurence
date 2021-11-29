@@ -10,7 +10,8 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
     {
         public BranchIdentification Identification { get; set; }
         public BranchPostalAddress PostalAddress { get; set; }
-        public BranchAvailbility Availbility { get; set; }
+        public Availability Availbility { get; set; }
         public List<BranchPhone> Phones { get; set; }
+        public List<ChannelService> Services { get; set; }
     }
 }

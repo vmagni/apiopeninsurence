@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Model.Data.Channel
 {
-    public class BranchAvailbility
+    public class Availability
     {
-        public List<BranchAvailbilityStandards> Standards { get; set; }
+        public List<AvailabilityStandards> Standards { get; set; }
         public bool IsPublicAccessAllowed { get; set; }
 
     }
 
-    public class BranchAvailbilityStandards
+    public class AvailabilityStandards
     {
         public string WeekDay { get; set; }
         public string OpeningTime { get; set; }

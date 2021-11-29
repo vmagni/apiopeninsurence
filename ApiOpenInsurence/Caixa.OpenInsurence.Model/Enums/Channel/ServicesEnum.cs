@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Model.Enums.Channel
 {
-    public enum BranchServiceEnum
+    public enum ServicesEnum
     {
         [Description("Alterações de Forma de Pagamento")]
         ALTERACOES_FORMA_PAGAMENTO = 1,
