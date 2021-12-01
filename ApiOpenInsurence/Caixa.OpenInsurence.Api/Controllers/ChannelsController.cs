@@ -1,10 +1,9 @@
 ﻿using Caixa.OpenInsurence.Model.Api;
 using Caixa.OpenInsurence.Model.Api.Channel;
+using Caixa.OpenInsurence.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Api.Controllers
@@ -15,18 +14,31 @@ namespace Caixa.OpenInsurence.Api.Controllers
     {
 
         private readonly ILogger<ChannelsController> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly IChannelsService _channelsService;
 
-        public ChannelsController(ILogger<ChannelsController> logger)
+        private string username;
+        private string url;
+
+        public ChannelsController(ILogger<ChannelsController> logger, IConfiguration configuration, IChannelsService channelsService)
         {
             _logger = logger;
+            _configuration = configuration;
+            _channelsService = channelsService;
+
+            username = configuration.GetSection("TokenUsername").Value;
+            url = configuration.GetSection("Urls:Token").Value;
         }
+
+        
 
         
 
         [HttpPost]
         [Route("branches")]
-        public ActionResult<BranchChannelResponse> Branches([FromBody] ChannelsRequest request)
+        public async Task<IActionResult> Branches([FromBody] ChannelsRequest request)
         {
+            var retorno = await _channelsService.GetBranches(url, username);
             return Ok(new BranchChannelResponse());
         }
 

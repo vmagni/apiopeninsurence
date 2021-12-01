@@ -1,3 +1,5 @@
+using Caixa.OpenInsurence.Service.Interfaces;
+using Caixa.OpenInsurence.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,10 @@ namespace Caixa.OpenInsurence.Channels.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Caixa.OpenInsurence.Channels.Api", Version = "v1" });
             });
+
+            //INTERFACES
+            services.AddScoped<IChannelsService, ChannelsService>();
+            services.AddScoped<ITokenService, TokenService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

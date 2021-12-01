@@ -9,7 +9,7 @@ namespace Caixa.OpenInsurence.Service.Interfaces
     public interface IChannelsService
     {
         
-        public object GetBranches();
+        public Task<object> GetBranches(string url, string username);
         public object GetEletronicChannels();
         public object GetPhoneChannels();
 

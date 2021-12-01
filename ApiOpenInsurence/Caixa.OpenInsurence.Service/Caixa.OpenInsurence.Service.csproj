@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Caixa.OpenInsurence.Model\Caixa.OpenInsurence.Model.csproj" />
+  </ItemGroup>
+
 </Project>
