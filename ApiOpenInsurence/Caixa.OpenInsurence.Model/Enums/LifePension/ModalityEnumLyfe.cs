@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Enums.LifePension
 {
-    public enum ModalityEnum
+    public enum ModalityEnumLife
     {
         CONTRIBUICAO_VARIAVEL, 
         BENEFICIO_DEFINIDO

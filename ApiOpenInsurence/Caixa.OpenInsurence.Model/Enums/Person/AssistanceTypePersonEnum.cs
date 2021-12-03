@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Enums.Person
 {
-    public enum AssistanceTypeEnum
+    public enum AssistanceTypePersonEnum
     {
         ACOMPANHANTE_CASO_HOSPITALIZACAO_PROLONGADA, 
         ARQUITETO_VIRTUAL, 

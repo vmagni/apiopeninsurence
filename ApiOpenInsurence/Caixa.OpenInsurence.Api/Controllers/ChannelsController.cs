@@ -20,7 +20,9 @@ namespace Caixa.OpenInsurence.Api.Controllers
         private string username;
         private string url;
 
-        public ChannelsController(ILogger<ChannelsController> logger, IConfiguration configuration, IChannelsService channelsService)
+        public ChannelsController(ILogger<ChannelsController> logger, 
+                                  IConfiguration configuration
+                                  ,IChannelsService channelsService)
         {
             _logger = logger;
             _configuration = configuration;

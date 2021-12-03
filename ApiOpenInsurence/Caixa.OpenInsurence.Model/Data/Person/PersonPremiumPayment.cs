@@ -8,7 +8,7 @@ namespace Caixa.OpenInsurence.Model.Data.Person
     public class PersonPremiumPayment
     {
         
-        public PaymentMethodEnum PaymentMethod { get; set; }
+        public PaymentMethodPersonEnum PaymentMethod { get; set; }
         public FrequencyEnum Frequency { get; set; }
         public string premiumTax { get; set; }
         

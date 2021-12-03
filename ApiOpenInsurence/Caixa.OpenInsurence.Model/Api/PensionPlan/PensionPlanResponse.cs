@@ -12,5 +12,15 @@ namespace Caixa.OpenInsurence.Model.Api.PensionPlan
         public PensionPlanBrand Data { get; set; }
         public LinksPaginated LinksPaginated { get; set; }
         public MetaPaginated MetaPaginated { get; set; }
+
+        public PensionPlanResponse() 
+        {
+            Data = new PensionPlanBrand();
+
+            LinksPaginated = new LinksPaginated();
+
+            MetaPaginated = new MetaPaginated();
+        
+        }
     }
 }

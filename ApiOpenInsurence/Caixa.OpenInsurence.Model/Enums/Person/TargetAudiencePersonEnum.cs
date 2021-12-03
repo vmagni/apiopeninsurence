@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Enums.Person
 {
-    public enum ContractTypeEnum
+    public enum TargetAudiencePersonEnum
     {
-        REPARTICAO_SIMPLES, 
-        REPARTICAO_CAPITAIS, 
-        CAPITALIZACAO
+        PESSOA_NATURAL, 
+        PESSOA_JURIDICA
     }
 }

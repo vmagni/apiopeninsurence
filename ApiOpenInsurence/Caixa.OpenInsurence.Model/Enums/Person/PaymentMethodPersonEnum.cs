@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Enums.Person
 {
-    public enum PaymentMethodEnum
+    public enum PaymentMethodPersonEnum
     {
         CARTAO_CREDITO, 
         DEBITO_CONTA, 

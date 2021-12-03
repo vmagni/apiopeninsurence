@@ -10,7 +10,7 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
         public string Name { get; set; }
         public string Code { get; set; }
         public SegmentEnum Segment { get; set; }
-        public ModalityEnum Modality { get; set; }
+        public ModalityEnumLife Modality { get; set; }
         public string OptionalCoverage { get; set; }
         public LifePensionProductDetails productDetails { get; set; }
         public LifePensionMinimumRequirements MinimumRequirements { get; set; }

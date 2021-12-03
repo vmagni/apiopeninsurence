@@ -20,8 +20,12 @@ namespace Caixa.OpenInsurence.Service.Services
         }
         public async Task<object> GetBranches(string url, string username)
         {
-            var tokenRequest = new SecurityTokenRequest() { Username = username, Funcao = Enum.GetName(typeof(TokenFunctionEnum), TokenFunctionEnum.OPIN_ConsultaProdutosVidaPF) };
+            var tokenRequest = new SecurityTokenRequest() { Username = username
+                                                            , Funcao = Enum.GetName(typeof(TokenFunctionEnum)
+                                                            , TokenFunctionEnum.OPIN_ConsultaProdutosVidaPF) };
+
             var token = await _tokenService.GenerateToken(url, tokenRequest);
+
             throw new NotImplementedException();
         }
 

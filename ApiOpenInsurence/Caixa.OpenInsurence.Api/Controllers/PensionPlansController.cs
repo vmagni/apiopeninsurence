@@ -1,12 +1,8 @@
-﻿using Caixa.OpenInsurence.Model.Api;
-using Caixa.OpenInsurence.Model.Api.Channel;
+﻿using Caixa.OpenInsurence.Model.Api.Channel;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Caixa.OpenInsurence.Model.Api.PensionPlan;
+using Caixa.OpenInsurence.Service.Interfaces;
+using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Api.Controllers
 {
@@ -14,10 +10,20 @@ namespace Caixa.OpenInsurence.Api.Controllers
     [Route("api/[controller]")]
     public class PensionPlansController : ControllerBase
     {
-        [HttpPost]
-        public ActionResult<PensionPlanResponse> PensionPlan([FromBody] ChannelsRequest request)
+        private readonly IPensionPlansService _pensionPlansService;
+
+        public PensionPlansController(IPensionPlansService pensionPlansService)
         {
-            return Ok(new PensionPlanResponse());
+            _pensionPlansService = pensionPlansService;
+        }
+
+        [HttpPost]
+        [Route("GetPensionPlan")]
+        public async Task<PensionPlanResponse> GetPensionPlan(ChannelsRequest request)
+        {
+            var response = await _pensionPlansService.GetPensionPlan(request);
+
+            return response;
         }
 
     }

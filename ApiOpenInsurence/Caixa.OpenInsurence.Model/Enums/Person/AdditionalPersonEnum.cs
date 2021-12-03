@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Enums.Person
 {
-    public enum AdditionalEnum
+    public enum AdditionalPersonEnum
     {
         SORTEIO, 
         SERVICO_ASSISTENCIAS_COMPLEMENTARES_PAGO, 
