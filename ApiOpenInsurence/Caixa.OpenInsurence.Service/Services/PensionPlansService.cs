@@ -1,6 +1,6 @@
-﻿using Caixa.OpenInsurence.Model.Api.Channel;
+﻿using Caixa.OpenInsurence.Data.Interfaces;
+using Caixa.OpenInsurence.Model.Api.Channel;
 using Caixa.OpenInsurence.Model.Api.PensionPlan;
-using Caixa.OpenInsurence.Model.Api.Shared;
 using Caixa.OpenInsurence.Model.Data.PensionPlan;
 using Caixa.OpenInsurence.Model.Data.Token;
 using Caixa.OpenInsurence.Model.Enums.PensionPlan;
@@ -17,30 +17,16 @@ namespace Caixa.OpenInsurence.Service.Services
 {
     public class PensionPlansService : IPensionPlansService
     {
-        private readonly ITokenService _tokenService;
-
-        public PensionPlansService(ITokenService tokenService)
+        private readonly IDatabaseService _databaseService;
+        public PensionPlansService(IDatabaseService databaseService)
         {
-            _tokenService = tokenService;
+            _databaseService = databaseService;
         }
-
         public async Task<PensionPlanResponse> GetPensionPlan(ChannelsRequest request)
-        {
+        {    
             try
             {
-                var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultaProdutosPrevidenciaCompleto";
-
-                var tokenRequest = new SecurityTokenRequest()
-                {
-                    Username = "cvp_opin_cst",
-                    Funcao = Enum.GetName(typeof(TokenFunctionEnum)
-                    , TokenFunctionEnum.OPIN_ConsultaProdutosPrevidenciaNovosFundos)
-                };
-
-                var result = await _tokenService.GenerateToken(url, tokenRequest);
-
-                //var responseServiceCaixa = await GetOPIN_ConsultaProdutosPrevidenciaCompleto(token, url);
-                var responseServiceCaixa = JsonConvert.DeserializeObject<ProdutosPrevidenciaCompletoResponse>((string)result);
+                var responseServiceCaixa = await _databaseService.GetProdutosPrevidenciaCompleto();
 
     
                 PensionPlanResponse response = new PensionPlanResponse();
@@ -179,20 +165,20 @@ namespace Caixa.OpenInsurence.Service.Services
                                 MinRequirementContract = ""//TODO : bater qual será esse campo
                             },
                             TargetAudiance = TargetAudianceEnum.PESSOA_JURIDICA//TODO : Esta vindo string do API product.TIPO_PESSOA
-                            
-                        }) ;
+
+                        });
                     }
-                    
+
                 }
 
 
-                //var pensionplan = responseServiceCaixa.dados.Select(x => new PensionPlanCompany
-                //{
-                //    Name = DateTime.Now.ToLongTimeString(),
+                var pensionplan = responseServiceCaixa.dados.Select(x => new PensionPlanCompany
+                {
+                   Name = DateTime.Now.ToLongTimeString(),
 
-                //}).ToList();
+                }).ToList();
 
-                //response.Data.Companies.AddRange(pensionplan);
+                response.Data.Companies.AddRange(pensionplan);
 
                 return response;
             }
@@ -203,23 +189,6 @@ namespace Caixa.OpenInsurence.Service.Services
             }
             
             
-        }
-
-        private async Task<ProdutosPrevidenciaCompletoResponse> GetOPIN_ConsultaProdutosPrevidenciaCompleto(SecurityToken requestBody, string url)
-        {
-            HttpClientHandler handler = new HttpClientHandler();
-            handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
-
-            //REQUEST
-            var client = new HttpClient(handler);
-
-            var json = JsonConvert.SerializeObject(requestBody);
-
-            var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-
-            var responseData = response.Content.ReadAsStringAsync();
-
-            return JsonConvert.DeserializeObject<ProdutosPrevidenciaCompletoResponse>(responseData.Result);            
         }
     }
 }

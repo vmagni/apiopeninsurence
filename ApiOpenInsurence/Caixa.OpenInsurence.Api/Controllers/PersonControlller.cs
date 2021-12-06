@@ -9,7 +9,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
     public class PersonControlller : ControllerBase
     {
         [HttpPost]
-        public ActionResult<PersonResponse> Person([FromBody] Request request)
+        public ActionResult<PersonResponse> Person([FromBody] ApiRequest request)
         {
             return Ok(new PersonResponse());
         }

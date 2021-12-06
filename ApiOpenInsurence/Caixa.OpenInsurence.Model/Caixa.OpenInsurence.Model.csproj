@@ -9,4 +9,12 @@
     <PackageReference Include="System.Linq" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Caixa.OpenInsurence.Data\Caixa.OpenInsurence.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Helpers\" />
+  </ItemGroup>
+
 </Project>

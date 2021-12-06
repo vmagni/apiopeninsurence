@@ -1,3 +1,5 @@
+using Caixa.OpenInsurence.Data.Interfaces;
+using Caixa.OpenInsurence.Data.Services;
 using Caixa.OpenInsurence.Service.Interfaces;
 using Caixa.OpenInsurence.Service.Services;
 using Microsoft.AspNetCore.Builder;
@@ -38,7 +40,9 @@ namespace Caixa.OpenInsurence.Channels.Api
             //INTERFACES
             services.AddScoped<IChannelsService, ChannelsService>();
             services.AddScoped<IPensionPlansService, PensionPlansService>();
+            services.AddScoped<IDatabaseService, DatabaseService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<ITokenConfigManager, TokenConfigManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

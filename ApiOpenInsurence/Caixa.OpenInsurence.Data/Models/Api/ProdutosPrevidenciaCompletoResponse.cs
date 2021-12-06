@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Caixa.OpenInsurence.Model.Api.Shared
+namespace Caixa.OpenInsurence.Data.Api
 {
     public class ProdutosPrevidenciaCompletoResponse
     {

@@ -3,7 +3,7 @@
 
 namespace Caixa.OpenInsurence.Model.Api.Shared
 {
-    public class Request
+    public class ApiRequest
     {
         [JsonProperty("page")]
         public int Page { get; set; }

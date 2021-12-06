@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caixa.OpenInsurence.Service.Interfaces
+namespace Caixa.OpenInsurence.Data.Interfaces
 {
     public interface ITokenService
     {
-        public Task<object> GenerateToken(string url, SecurityTokenRequest request);
+        public Task<SecurityToken> GenerateToken(TokenFunctionEnum funcaoRequest);
     }
 }
