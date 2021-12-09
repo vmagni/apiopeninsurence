@@ -6,6 +6,8 @@ namespace Caixa.OpenInsurence.Model.Enums.PensionPlan
 {
     public enum PremiumUpdateIndexEnum
     {
-        IPCA, IGPM, INPC
+        IPCA, 
+        IGPM, 
+        INPC
     }
 }

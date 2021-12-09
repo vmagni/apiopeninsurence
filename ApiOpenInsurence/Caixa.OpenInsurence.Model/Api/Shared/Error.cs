@@ -9,7 +9,7 @@ namespace Caixa.OpenInsurence.Model.Api.Shared
         public string Code { get; set; }
         public string Title { get; set; }
         public string Detail { get; set; }
-        public string RequestDateTime { get; set; }
+        public DateTime RequestDateTime { get; set; }
 
     }
 }

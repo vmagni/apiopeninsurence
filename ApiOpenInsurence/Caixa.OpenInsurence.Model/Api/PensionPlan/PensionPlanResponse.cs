@@ -6,21 +6,29 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Api.PensionPlan
 {
-    public class PensionPlanResponse
+    public class PensionPlanResponse 
     {
-        public string RequestTime { get; set; }
         public PensionPlanBrand Data { get; set; }
         public LinksPaginated LinksPaginated { get; set; }
         public MetaPaginated MetaPaginated { get; set; }
 
-        public PensionPlanResponse() 
+        public PensionPlanResponse(PensionPlanResponse response) 
+        {
+            Data = response.Data;
+
+            LinksPaginated = new LinksPaginated();
+
+            MetaPaginated = response.MetaPaginated;
+        
+        }
+
+        public PensionPlanResponse()
         {
             Data = new PensionPlanBrand();
 
             LinksPaginated = new LinksPaginated();
 
             MetaPaginated = new MetaPaginated();
-        
         }
     }
 }

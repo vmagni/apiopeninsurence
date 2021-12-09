@@ -20,9 +20,10 @@ namespace Caixa.OpenInsurence.Data.Services
         public async Task<ProdutosPrevidenciaCompletoResponse> GetProdutosPrevidenciaCompleto()
         {
             var token = await _tokenService.GenerateToken(TokenFunctionEnum.OPIN_ConsultaProdutosPrevidenciaCompleto);
+            
             var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultaProdutosPrevidenciaCompleto";
 
-
+            
             HttpClientHandler handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 

@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Api.Shared
 {
-    public class ResponseError
+    public class ValidaResponseDTO
     {
-        public Error Errors { get; set; }
-        public MetaPaginated Meta { get; set; }
+        public int ResponseCode { get; set; }
 
+        public string ResponseMessage { get; set; }
     }
 }

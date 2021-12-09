@@ -56,8 +56,6 @@ namespace Caixa.OpenInsurence.Data.Services
             var responseData = response.Content.ReadAsStringAsync();
 
             //var l = JsonConvert.DeserializeObject<ProdutosPrevidenciaCompletoResponse>(responseData.Result);
-
-
             return JsonConvert.DeserializeObject<SecurityTokenResponse>(responseData.Result);
         }
     }
