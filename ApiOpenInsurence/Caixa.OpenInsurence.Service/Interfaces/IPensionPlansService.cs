@@ -6,6 +6,6 @@ namespace Caixa.OpenInsurence.Service.Interfaces
 {
     public interface IPensionPlansService
     {
-        public Task<PensionPlanResponse> GetPensionPlan(ApiRequest request);
+        public Task<ValidaResponseDTO> GetPensionPlan(ApiRequest request);
     }
 }

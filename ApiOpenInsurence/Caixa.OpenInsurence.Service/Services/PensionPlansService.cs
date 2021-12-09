@@ -18,7 +18,7 @@ namespace Caixa.OpenInsurence.Service.Services
         {
             _databaseService = databaseService;
         }
-        public async Task<PensionPlanResponse> GetPensionPlan(ApiRequest request)
+        public async Task<ValidaResponseDTO> GetPensionPlan(ApiRequest request)
         {    
             try
             {
@@ -27,7 +27,7 @@ namespace Caixa.OpenInsurence.Service.Services
     
                 PensionPlanResponse response = new PensionPlanResponse();
 
-                response.RequestTime = DateTime.Now.ToLongDateString();
+                //response.RequestTime = DateTime.Now.ToLongDateString();
 
                 response.Data.Name = "";//TODO : bater qual será esse campo
 
@@ -49,7 +49,7 @@ namespace Caixa.OpenInsurence.Service.Services
                             PensionPlanCoverages = new List<PensionPlanCoverage>(),//TODO : bater qual será esse campo
                             Additional = (AdditionalEnum)Convert.ToInt16(product.COD_PRODUTO),//TODO : esta correto ?
                             AdditionalOthers = new List<string>(),//TODO : bater qual será esse campo
-                            AssistanceTypes = AssistanceTypeEnum.AUTOMOVEL,//TODO : bater qual será esse campo
+                            AssistanceTypes = AssistanceTypeEnum.N_A,//TODO : bater qual será esse campo
                             AssistanceTypesOthers = new List<string>(),//TODO : bater qual será esse campo
                             TermsAndConditions = new PensionPlanTerm
                             {
@@ -58,13 +58,13 @@ namespace Caixa.OpenInsurence.Service.Services
                             },
                             UpdatePMBaC = new PensionPlanUpdatePMBaC
                             {
-                                InterestRate = "0",//TODO : bater qual será esse campo
-                                UpdateIndex = UpdateIndexPersonPlanEnum.FINANCEIRA,//TODO : bater qual será esse campo
+                                InterestRate = "6",//TODO : bater qual será esse campo
+                                UpdateIndex = UpdateIndexPersonPlanEnum.IPCA,//TODO : bater qual será esse campo
                             },
-                            PremiumUpdateIndex = PremiumUpdateIndexEnum.IGPM,//TODO : bater qual será esse campo
+                            PremiumUpdateIndex = PremiumUpdateIndexEnum.IPCA,//TODO : bater qual será esse campo
                             AgeReframing = new PensionPlanAgeReframing
                             {
-                                ReframingCriterion = ReframingCriterionEnum.NAO_APLICAVEL,//TODO : bater qual será esse campo
+                                ReframingCriterion = ReframingCriterionEnum.MUDANCA_FAIXA_ETARIA,//TODO : bater qual será esse campo
                                 ReframingPeriodicty = 0 //TODO : bater qual será esse campo
                             },
                             FinancialRegimeContractType = RegimeContractTypeEnum.CAPITALIZACAO,//TODO : bater qual será esse campo
@@ -72,12 +72,12 @@ namespace Caixa.OpenInsurence.Service.Services
                             {
                                 ReclaimTable = new PensionPlanReclaimTable
                                 {
-                                    InitialMonthRange = 0,//TODO : bater qual será esse campo
-                                    FinalMonthRange = 0,//TODO : bater qual será esse campo
-                                    Percentage = ""//TODO : bater qual será esse campo
+                                    InitialMonthRange = 1,//TODO : bater qual será esse campo
+                                    FinalMonthRange = 12,//TODO : bater qual será esse campo
+                                    Percentage = "0"//TODO : bater qual será esse campo
                                 },
                                 DifferentiatePercentage = "",//TODO : bater qual será esse campo
-                                GracePeriod = ""//TODO : bater qual será esse campo
+                                GracePeriod = "60"//TODO : bater qual será esse campo
                             },
                             OtherGuarateedValues = OtherGuarateedValuesEnum.NAO_APLICA,//TODO : bater qual será esse campo
                             ProfitModality = ProfitModalityEnum.FORMA_RENDA,//TODO : bater qual será esse campo
@@ -89,7 +89,7 @@ namespace Caixa.OpenInsurence.Service.Services
                             ContributionTax = "",
                             MinimunRequirement = new PensionPlanMinimunRequirement
                             {
-                                MinRequirementContractType = RequirementContractTypeEnum.INDIVIDUAL,//TODO : bater qual será esse campo
+                                MinRequirementContractType = product.TIPO_PESSOA == "PF" ? RequirementContractTypeEnum.INDIVIDUAL : RequirementContractTypeEnum.COLETIVO,//TODO : bater qual será esse campo
                                 MinRequirementContract = ""//TODO : bater qual será esse campo
                             },
                             TargetAudiance = TargetAudianceEnum.PESSOA_JURIDICA//TODO : Esta vindo string do API product.TIPO_PESSOA
@@ -168,20 +168,29 @@ namespace Caixa.OpenInsurence.Service.Services
                 }
 
 
-                var pensionplan = responseServiceCaixa.dados.Select(x => new PensionPlanCompany
+                //var pensionplan = responseServiceCaixa.dados.Select(x => new PensionPlanCompany
+                //{
+                //   Name = DateTime.Now.ToLongTimeString(),
+
+                //}).ToList();
+
+                //response.Data.Companies.AddRange(pensionplan);
+
+                response.MetaPaginated.TotalPages = request.Page;
+                response.MetaPaginated.TotalRecords = request.PageSize;
+
+                return new PensionPlanDTO() 
                 {
-                   Name = DateTime.Now.ToLongTimeString(),
-
-                }).ToList();
-
-                response.Data.Companies.AddRange(pensionplan);
-
-                return response;
+                    ResponseCode = 200,
+                    ResponseMessage = "",
+                    PensionPlan = response
+                };
             }
             catch (Exception ex)
             {
                 throw ex;
-            }           
+            }        
+            
         }
     }
 }

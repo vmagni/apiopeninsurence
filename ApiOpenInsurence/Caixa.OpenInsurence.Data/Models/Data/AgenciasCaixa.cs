@@ -20,7 +20,10 @@ namespace Caixa.OpenInsurence.Data.Models.Data
         public string NUMERO { get; set; }
         public string COMPLEMENTO { get; set; }
         public string BAIRRO { get; set; }
+
+        [JsonProperty("CEP ")]
         public string CEP { get; set; }
+
         public string MUNICIPIO { get; set; }
         public string UF { get; set; }
         public string DATA_INICIO { get; set; }

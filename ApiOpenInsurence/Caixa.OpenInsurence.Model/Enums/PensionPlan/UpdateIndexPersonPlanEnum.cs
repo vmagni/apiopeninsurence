@@ -8,6 +8,7 @@ namespace Caixa.OpenInsurence.Model.Enums.PensionPlan
     {
         FINANCEIRA, 
         IGPM, 
-        INPC
+        INPC,
+        IPCA
     }
 }
