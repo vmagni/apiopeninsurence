@@ -1,8 +1,7 @@
 ﻿using Caixa.OpenInsurence.Model.Api;
-using Caixa.OpenInsurence.Model.Api.Channel;
+using Caixa.OpenInsurence.Model.Api.Shared;
 using Caixa.OpenInsurence.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
@@ -12,48 +11,34 @@ namespace Caixa.OpenInsurence.Api.Controllers
     [Route("api/[controller]")]
     public class ChannelsController : ControllerBase
     {
-
-        private readonly ILogger<ChannelsController> _logger;
-        private readonly IConfiguration _configuration;
         private readonly IChannelsService _channelsService;
+        private readonly IPensionPlansService _pensionPlansService;
 
-        private string username;
-        private string url;
-
-        public ChannelsController(ILogger<ChannelsController> logger, 
-                                  IConfiguration configuration
-                                  ,IChannelsService channelsService)
+        public ChannelsController(IChannelsService channelsService, IPensionPlansService pensionPlansService)
         {
-            _logger = logger;
-            _configuration = configuration;
             _channelsService = channelsService;
-
-            username = configuration.GetSection("TokenUsername").Value;
-            url = configuration.GetSection("Urls:Token").Value;
+            _pensionPlansService = pensionPlansService;
         }
 
-        
-
-        
-
         [HttpPost]
-        [Route("branches")]
-        public async Task<IActionResult> Branches([FromBody] ChannelsRequest request)
+        [Route("Branches")]
+        public async Task<BranchChannelResponse> Branches(ApiRequest request)
         {
-            var retorno = await _channelsService.GetBranches(url, username);
-            return Ok(new BranchChannelResponse());
+            var retorno = await _channelsService.GetBranches(request);
+
+            return retorno;
         }
 
         [HttpPost]
-        [Route("eletronic")]
-        public ActionResult<ElectronicChannelResponse> EletronicChannels([FromBody] ChannelsRequest request)
+        [Route("Eletronic")]
+        public ActionResult<ElectronicChannelResponse> EletronicChannels([FromBody] ApiRequest request)
         {
             return Ok(new ElectronicChannelResponse());
         }
 
         [HttpPost]
-        [Route("phone")]
-        public ActionResult<PhoneChannelResponse> PhoneChannels([FromBody] ChannelsRequest request)
+        [Route("Phone")]
+        public ActionResult<PhoneChannelResponse> PhoneChannels([FromBody] ApiRequest request)
         {
             return Ok(new PhoneChannelResponse());
         }

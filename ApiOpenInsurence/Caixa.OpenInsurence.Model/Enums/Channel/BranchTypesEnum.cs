@@ -9,9 +9,13 @@ namespace Caixa.OpenInsurence.Model.Enums.Channel
 {
     public enum BranchTypesEnum
     {
+        [Description("Agência")]
+        AGENCIA,
         [Description("Posto de Atendimento")]
-        POSTO_ATENDIMENTO = 1,
+        POSTO_ATENDIMENTO,
+        [Description("Posto de Atendimento Eletrônico")]
+        POSTO_ATENDIMENTO_ELETRONICO,
         [Description("Unidade Administrative Desmembrada")]
-        UNIDADE_ADMINISTRATIVA_DESMEMBRADA = 2
+        UNIDADE_ADMINISTRATIVA_DESMEMBRADA
     }
 }

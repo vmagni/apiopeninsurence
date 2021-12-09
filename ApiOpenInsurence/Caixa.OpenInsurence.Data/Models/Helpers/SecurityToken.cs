@@ -44,6 +44,8 @@ namespace Caixa.OpenInsurence.Model.Data.Token
         [Description("OPIN_ConsultaProdutosPrevidenciaNovosFundos")]
         OPIN_ConsultaProdutosPrevidenciaNovosFundos,
         [Description("OPIN_ConsultaProdutosVidaPF")]
-        OPIN_ConsultaProdutosVidaPF
+        OPIN_ConsultaProdutosVidaPF,
+        [Description("OPIN_ConsultarAgenciasCAIXA")]
+        OPIN_ConsultarAgenciasCAIXA
     }
 }

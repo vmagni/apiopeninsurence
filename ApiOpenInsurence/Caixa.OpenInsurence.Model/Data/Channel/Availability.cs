@@ -18,5 +18,6 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
         public string WeekDay { get; set; }
         public string OpeningTime { get; set; }
         public string ClosingTime { get; set; }
+        public string Exception { get; set; }
     }
 }

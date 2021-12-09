@@ -1,4 +1,5 @@
-﻿using Caixa.OpenInsurence.Data.Api;
+﻿
+using Caixa.OpenInsurence.Data.Models.Api;
 using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Data.Interfaces
@@ -7,5 +8,6 @@ namespace Caixa.OpenInsurence.Data.Interfaces
     {
         public Task<ProdutosPrevidenciaCompletoResponse> GetProdutosPrevidenciaCompleto();
         public Task<ProdutosVidaPfCompletoResponse> GetProdutosVidaPfCompleto();
+        public Task<AgenciasCaixaResponse> GetAgenciasCaixa();
     }
 }

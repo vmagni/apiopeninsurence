@@ -14,13 +14,28 @@ namespace Caixa.OpenInsurence.Model.Api
         public BranchBrand Data { get; set; }
         public LinksPaginated Links { get; set; }
         public MetaPaginated Meta { get; set; }
+        public BranchChannelResponse()
+        {
+            Data = new BranchBrand();
+            Links = new LinksPaginated();
+            Meta = new MetaPaginated();
+        }
     }
+
+    
 
     public class ElectronicChannelResponse
     {
         public ElectronicChannelBrand Data { get; set; }
         public LinksPaginated Links { get; set; }
         public MetaPaginated Meta { get; set; }
+
+        public ElectronicChannelResponse()
+        {
+            Data = new ElectronicChannelBrand();
+            Links = new LinksPaginated();
+            Meta = new MetaPaginated();
+        }
     }
 
     public class PhoneChannelResponse
@@ -28,5 +43,12 @@ namespace Caixa.OpenInsurence.Model.Api
         public PhoneChannelCompany Data { get; set; }
         public LinksPaginated Links { get; set; }
         public MetaPaginated Meta { get; set; }
+
+        public PhoneChannelResponse()
+        {
+            Data = new PhoneChannelCompany();
+            Links = new LinksPaginated();
+            Meta = new MetaPaginated();
+        }
     }
 }

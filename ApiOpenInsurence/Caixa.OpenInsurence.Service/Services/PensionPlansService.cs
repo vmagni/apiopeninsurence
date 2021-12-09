@@ -1,16 +1,12 @@
 ﻿using Caixa.OpenInsurence.Data.Interfaces;
-using Caixa.OpenInsurence.Model.Api.Channel;
 using Caixa.OpenInsurence.Model.Api.PensionPlan;
+using Caixa.OpenInsurence.Model.Api.Shared;
 using Caixa.OpenInsurence.Model.Data.PensionPlan;
-using Caixa.OpenInsurence.Model.Data.Token;
 using Caixa.OpenInsurence.Model.Enums.PensionPlan;
 using Caixa.OpenInsurence.Service.Interfaces;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Service.Services
@@ -22,7 +18,7 @@ namespace Caixa.OpenInsurence.Service.Services
         {
             _databaseService = databaseService;
         }
-        public async Task<PensionPlanResponse> GetPensionPlan(ChannelsRequest request)
+        public async Task<PensionPlanResponse> GetPensionPlan(ApiRequest request)
         {    
             try
             {
@@ -184,11 +180,8 @@ namespace Caixa.OpenInsurence.Service.Services
             }
             catch (Exception ex)
             {
-
                 throw ex;
-            }
-            
-            
+            }           
         }
     }
 }

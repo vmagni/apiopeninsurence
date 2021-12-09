@@ -1,8 +1,8 @@
-﻿using Caixa.OpenInsurence.Model.Api.Channel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Caixa.OpenInsurence.Model.Api.PensionPlan;
 using Caixa.OpenInsurence.Service.Interfaces;
 using System.Threading.Tasks;
+using Caixa.OpenInsurence.Model.Api.Shared;
 
 namespace Caixa.OpenInsurence.Api.Controllers
 {
@@ -19,7 +19,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
 
         [HttpPost]
         [Route("GetPensionPlan")]
-        public async Task<PensionPlanResponse> GetPensionPlan(ChannelsRequest request)
+        public async Task<PensionPlanResponse> GetPensionPlan(ApiRequest request)
         {
             var response = await _pensionPlansService.GetPensionPlan(request);
 

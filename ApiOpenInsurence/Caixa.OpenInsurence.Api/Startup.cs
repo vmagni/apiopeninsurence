@@ -43,6 +43,14 @@ namespace Caixa.OpenInsurence.Channels.Api
             services.AddScoped<IDatabaseService, DatabaseService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ITokenConfigManager, TokenConfigManager>();
+
+            //SERVICES
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

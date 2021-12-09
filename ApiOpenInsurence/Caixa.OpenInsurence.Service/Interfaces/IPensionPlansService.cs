@@ -1,11 +1,11 @@
-﻿using Caixa.OpenInsurence.Model.Api.Channel;
-using Caixa.OpenInsurence.Model.Api.PensionPlan;
+﻿using Caixa.OpenInsurence.Model.Api.PensionPlan;
+using Caixa.OpenInsurence.Model.Api.Shared;
 using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Service.Interfaces
 {
     public interface IPensionPlansService
     {
-        public Task<PensionPlanResponse> GetPensionPlan(ChannelsRequest request);
+        public Task<PensionPlanResponse> GetPensionPlan(ApiRequest request);
     }
 }
