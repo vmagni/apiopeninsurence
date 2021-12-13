@@ -1,3 +1,4 @@
+using Caixa.OpenInsurence.Api.Configs;
 using Caixa.OpenInsurence.Data.Interfaces;
 using Caixa.OpenInsurence.Data.Services;
 using Caixa.OpenInsurence.Service.Interfaces;
@@ -30,11 +31,12 @@ namespace Caixa.OpenInsurence.Channels.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Caixa.OpenInsurence.Channels.Api", Version = "v1" });
+                //c.OperationFilter<HeaderFilter>();
             });
 
             //INTERFACES
@@ -49,7 +51,7 @@ namespace Caixa.OpenInsurence.Channels.Api
             {
                 builder.AllowAnyOrigin()
                        .AllowAnyMethod()
-                       .AllowAnyHeader();
+                       .WithHeaders("Cache-Control", "Content-Security-Policy", "Content-Type", "Strict-Transport-Security", "X-Content-Type-Options", "X-Frame-Options");
             }));
         }
 

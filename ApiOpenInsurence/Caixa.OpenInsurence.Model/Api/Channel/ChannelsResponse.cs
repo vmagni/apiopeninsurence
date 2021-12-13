@@ -20,6 +20,16 @@ namespace Caixa.OpenInsurence.Model.Api
             Links = new LinksPaginated();
             Meta = new MetaPaginated();
         }
+
+        public BranchChannelResponse(BranchChannelResponse response)
+        {
+            Data = response.Data;
+
+            Links = new LinksPaginated();
+
+            Meta = response.Meta;
+
+        }
     }
 
     

@@ -1,5 +1,6 @@
 ﻿using Caixa.OpenInsurence.Data.Interfaces;
 using Caixa.OpenInsurence.Model.Api;
+using Caixa.OpenInsurence.Model.Api.Channel;
 using Caixa.OpenInsurence.Model.Api.Shared;
 using Caixa.OpenInsurence.Model.Data.Channel;
 using Caixa.OpenInsurence.Model.Enums.Channel;
@@ -22,7 +23,7 @@ namespace Caixa.OpenInsurence.Service.Services
             _databaseService = databaseService;
         }
 
-        public async Task<BranchChannelResponse> GetBranches(ApiRequest request)
+        public async Task<ValidaResponseDTO> GetBranches(ApiRequest request)
         {
             var responseServiceCaixa = await _databaseService.GetAgenciasCaixa();        
             var brachesGroupedBy = responseServiceCaixa.dados.GroupBy(x => x.CNPJ).ToList();
@@ -31,7 +32,7 @@ namespace Caixa.OpenInsurence.Service.Services
             int count = 0;
             foreach (var branches in brachesGroupedBy)
             {                  
-                response.Data.Name = branches.First().ORGAO;
+                response.Data.Name = "Caixa Vida e Previdência";
                 response.Data.Companies = new List<BranchCompany>();
                 foreach (var branch in branches)
                 {
@@ -39,7 +40,7 @@ namespace Caixa.OpenInsurence.Service.Services
                     BranchCompany company = new BranchCompany();
                     company.Cnpj = branch.CNPJ + "/" + branch.SEQUENCIAL_CNPJ;
                     company.Name = branch.NOME_INSTITUICAO;
-                    company.UrlComplementaryList = "";
+                    company.UrlComplementaryList = null;
                     company.Branches = new List<Branch>();
                     Branch branchUnity = new Branch();
 
@@ -57,29 +58,33 @@ namespace Caixa.OpenInsurence.Service.Services
                     //Identification
                     branchUnity.Identification = new BranchIdentification();
                     branchUnity.Identification.Name = branch.NOME_AGENCIA;
-                    branchUnity.Identification.Code = "";
-                    branchUnity.Identification.CheckDigit = !string.IsNullOrEmpty(branch.DV_CNPJ) ? Convert.ToInt32(branch.DV_CNPJ) : 0;
+                    branchUnity.Identification.Code = null;
+                    branchUnity.Identification.CheckDigit = 0;
                     branchUnity.Identification.Type = BranchTypesEnum.AGENCIA;
 
                     //Phones
                     branchUnity.Phones = new List<BranchPhone>();
                     BranchPhone phone = new BranchPhone();
                     phone.AreaCode = branch.DDD;
-                    phone.CountryCallingCode = "";
+                    phone.CountryCallingCode = null;
                     phone.Number = branch.FONE;
-                    phone.Type = "";
+                    phone.Type = null;
                     branchUnity.Phones.Add(phone);
 
                     //PostalAddress
                     branchUnity.PostalAddress = new BranchPostalAddress();
-                    branchUnity.PostalAddress.AdditionalInfo = "";
+                    branchUnity.PostalAddress.AdditionalInfo = null;
                     branchUnity.PostalAddress.Address = branch.ENDERECO + ", " + branch.NUMERO + " - " + branch.COMPLEMENTO;
                     branchUnity.PostalAddress.DistrictName = branch.BAIRRO;
                     branchUnity.PostalAddress.PostCode = branch.CEP;
-                    branchUnity.PostalAddress.Country = "";
-                    branchUnity.PostalAddress.CountryCode = "";
+                    branchUnity.PostalAddress.Country = null;
+                    branchUnity.PostalAddress.CountryCode = null;
                     branchUnity.PostalAddress.CountrySubDivision = branch.UF;
                     branchUnity.PostalAddress.TownName = branch.MUNICIPIO;
+
+                    branchUnity.PostalAddress.GeographicCoordinates = new BranchCoordinates();
+                    branchUnity.PostalAddress.GeographicCoordinates.Latitude = null;
+                    branchUnity.PostalAddress.GeographicCoordinates.Longitude = null;
 
                     //Services
                     branchUnity.Services = new List<ChannelService>();
@@ -94,16 +99,21 @@ namespace Caixa.OpenInsurence.Service.Services
                 }
             }
             response.Meta.TotalRecords = count;
-            return response;
+            return new BranchChannelsDTO()
+            {
+                ResponseCode = 200,
+                ResponseMessage = "",
+                BranchChannelsResponse = response
+            };
         }
 
-        public async Task<ElectronicChannelResponse> GetEletronicChannels(ApiRequest request)
+        public async Task<ValidaResponseDTO> GetEletronicChannels(ApiRequest request)
         {
             var responseServiceCaixa = await _databaseService.GetAgenciasCaixa();
             throw new NotImplementedException();
         }
 
-        public async Task<PhoneChannelResponse> GetPhoneChannels(ApiRequest request)
+        public async Task<ValidaResponseDTO> GetPhoneChannels(ApiRequest request)
         {
             var responseServiceCaixa = await _databaseService.GetAgenciasCaixa();
             throw new NotImplementedException();
