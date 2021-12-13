@@ -9,7 +9,11 @@ namespace Caixa.OpenInsurence.Model.Data.Person
         public PersonReclaimTable ReclaimTable { get; set; }
         public string DifferentiatedPercentage { get; set; }
         public PersonCovaregeAttibutesDetails GracePeriod { get; set; }
-        
 
+        public PersonReclaim()
+        {
+            ReclaimTable = new PersonReclaimTable();
+            GracePeriod = new PersonCovaregeAttibutesDetails();
+        }
     }
 }

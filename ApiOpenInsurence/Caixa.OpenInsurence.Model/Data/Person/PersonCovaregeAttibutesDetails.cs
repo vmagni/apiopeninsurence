@@ -8,5 +8,10 @@ namespace Caixa.OpenInsurence.Model.Data.Person
     {
         public long Amount { get; set; }
         public PersonCovaregeAttibutesDetailsUnit unit { get; set; }
+
+        public PersonCovaregeAttibutesDetails()
+        {
+            unit = new PersonCovaregeAttibutesDetailsUnit();           
+        }
     }
 }

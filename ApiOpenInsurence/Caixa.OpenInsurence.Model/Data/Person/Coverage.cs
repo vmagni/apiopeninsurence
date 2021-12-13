@@ -10,6 +10,10 @@ namespace Caixa.OpenInsurence.Model.Data.Person
         public CoverageEnum CoverageType { get; set; }
         public string CoverageOthers { get; set; }
         public PersonCoverageAttributes coverageAttributes { get; set; }
-        
+
+        public Coverage()
+        {
+            coverageAttributes = new PersonCoverageAttributes();
+        }
     }
 }

@@ -8,6 +8,11 @@ namespace Caixa.OpenInsurence.Model.Data.Person
     {
         public string Name { get; set; }
         public string CnpjNumber { get; set; }
-        public List<PersonProduct> PersonProducts { get; set; }        
+        public List<PersonProduct> PersonProducts { get; set; }
+
+        public PersonCompany()
+        {
+            PersonProducts = new List<PersonProduct>();
+        }
     }
 }

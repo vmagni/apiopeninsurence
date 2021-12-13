@@ -16,7 +16,7 @@ namespace Caixa.OpenInsurence.Model.Api.PensionPlan
         {
             Data = response.Data;
 
-            LinksPaginated = new LinksPaginated();
+            LinksPaginated = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/pension-plan");
 
             MetaPaginated = response.MetaPaginated;
         
@@ -26,7 +26,7 @@ namespace Caixa.OpenInsurence.Model.Api.PensionPlan
         {
             Data = new PensionPlanBrand();
 
-            LinksPaginated = new LinksPaginated();
+            LinksPaginated = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/pension-plan");
 
             MetaPaginated = new MetaPaginated();
         }

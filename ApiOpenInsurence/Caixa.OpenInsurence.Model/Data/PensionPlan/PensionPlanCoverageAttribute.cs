@@ -18,5 +18,13 @@ namespace Caixa.OpenInsurence.Model.Data.PensionPlan
         public PensionPlanGracePeriod GracePeriod { get; set; }
         public List<ExcludedRiskEnum> ExcludedRisks { get; set; }
         public string ExcludedRiskURL { get; set; }
+
+        public PensionPlanCoverageAttribute()
+        {
+            MinValue = new PensionPlanCoverageAttributeDetail();
+            MaxValue = new PensionPlanCoverageAttributeDetail();
+            GracePeriod = new PensionPlanGracePeriod();
+            ExcludedRisks = new List<ExcludedRiskEnum>();
+        }
     }
 }

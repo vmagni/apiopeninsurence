@@ -10,7 +10,8 @@ namespace Caixa.OpenInsurence.Model.Data.PensionPlan
         public string Name { get; set; }
         public string Code { get; set; }
         public ModalityEnum Modality { get; set; }
-        public List<PensionPlanCoverage> PensionPlanCoverages { get; set; }
+        //public List<PensionPlanCoverage> PensionPlanCoverages { get; set; }
+        public string PensionPlanCoverages { get; set; }
         public AdditionalEnum Additional { get; set; }
         public List<string> AdditionalOthers { get; set; }
         public AssistanceTypeEnum AssistanceTypes { get; set; }
@@ -30,7 +31,7 @@ namespace Caixa.OpenInsurence.Model.Data.PensionPlan
 
         public PensionPlanProduct()
         {
-            PensionPlanCoverages = new List<PensionPlanCoverage>();
+            //PensionPlanCoverages = new List<PensionPlanCoverage>();
             AdditionalOthers = new List<string>();
             AssistanceTypesOthers = new List<string>();
             TermsAndConditions = new PensionPlanTerm();

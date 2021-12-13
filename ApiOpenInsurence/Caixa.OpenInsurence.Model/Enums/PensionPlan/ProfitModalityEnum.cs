@@ -6,6 +6,7 @@ namespace Caixa.OpenInsurence.Model.Enums.PensionPlan
 {
     public enum ProfitModalityEnum
     {
-        PAGAMENTO_UNICO, FORMA_RENDA
+        PAGAMENTO_UNICO, 
+        FORMA_RENDA
     }
 }
