@@ -27,6 +27,13 @@ namespace Caixa.OpenInsurence.Model.Data.Person
         public string MinCoverageGroupRequired { get; set; }
         public string MinCoverageGroupRequiredOthers { get; set; }
 
+        public PersonCoverageAttributes()
+        {
+            MinValue = new PersonCovaregeAttibutesDetails();
+            MaxValue = new PersonCovaregeAttibutesDetails();
+            GracePeriod = new PersonGracePeriodUnit();
+            DifferentiatedGracePeriod = new PersonGracePeriodUnit();
+        }
 
     }
 }

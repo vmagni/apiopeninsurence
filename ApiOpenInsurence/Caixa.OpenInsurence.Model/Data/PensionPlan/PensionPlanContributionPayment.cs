@@ -7,7 +7,20 @@ namespace Caixa.OpenInsurence.Model.Data.PensionPlan
 {
     public class PensionPlanContributionPayment
     {
-        public ContributionPaymentMethodEnum ContributionPaymentMethod { get; set; }
-        public ContributionPeriodicityEnum ContributionPeriodicity { get; set; }
+        public List<ContributionPaymentMethodEnum> ContributionPaymentMethod { get; set; }
+        public List<ContributionPeriodicityEnum> ContributionPeriodicity { get; set; }
+
+        public PensionPlanContributionPayment()
+        {
+            ContributionPaymentMethod = new List<ContributionPaymentMethodEnum>();
+            ContributionPeriodicity = new List<ContributionPeriodicityEnum>();
+
+
+            ContributionPaymentMethod.Add(ContributionPaymentMethodEnum.DEBITO_CONTA);
+            ContributionPaymentMethod.Add(ContributionPaymentMethodEnum.BOLETO_BANCARIO);
+
+            ContributionPeriodicity.Add(ContributionPeriodicityEnum.MENSAL);
+            ContributionPeriodicity.Add(ContributionPeriodicityEnum.UNICA);
+        }
     }
 }

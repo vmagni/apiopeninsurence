@@ -27,16 +27,14 @@ namespace Caixa.OpenInsurence.Service.Services
     
                 PensionPlanResponse response = new PensionPlanResponse();
 
-                //response.RequestTime = DateTime.Now.ToLongDateString();
+                response.Data.Name = "";
 
-                response.Data.Name = "";//TODO : bater qual será esse campo
-
-                var t = responseServiceCaixa.dados.OrderBy(x => x.CNPJ_COD_FUNDO).Take(10).ToList();
+                var dados = responseServiceCaixa.dados.OrderBy(x => x.CNPJ_COD_FUNDO).ToList();
 
                 string cnpj = "vazio";
                 int count = -1;
 
-                foreach (var product in t)
+                foreach (var product in dados)
                 {
 
                     if (cnpj == product.CNPJ_COD_FUNDO)
@@ -46,53 +44,49 @@ namespace Caixa.OpenInsurence.Service.Services
                             Name = product.NOME_PRODUTO,
                             Code = product.COD_PRODUTO,
                             Modality = ModalityEnum.PECULIO, //TODO : bater qual será esse campo
-                            PensionPlanCoverages = new List<PensionPlanCoverage>(),//TODO : bater qual será esse campo
-                            Additional = (AdditionalEnum)Convert.ToInt16(product.COD_PRODUTO),//TODO : esta correto ?
-                            AdditionalOthers = new List<string>(),//TODO : bater qual será esse campo
-                            AssistanceTypes = AssistanceTypeEnum.N_A,//TODO : bater qual será esse campo
-                            AssistanceTypesOthers = new List<string>(),//TODO : bater qual será esse campo
+                            PensionPlanCoverages = "Aposentadoria",
+                            Additional = (AdditionalEnum)Convert.ToInt16(product.COD_PRODUTO),
+                            AdditionalOthers = new List<string>(),
+                            AssistanceTypes = AssistanceTypeEnum.N_A,
+                            AssistanceTypesOthers = new List<string>(),
                             TermsAndConditions = new PensionPlanTerm
                             {
                                 SusepProcessNumber = product.COD_SUSEP,
-                                Definition = "" //TODO : bater qual será esse campo
+                                Definition = product.DESCRICAO_COD_FUNDO
                             },
                             UpdatePMBaC = new PensionPlanUpdatePMBaC
                             {
-                                InterestRate = "6",//TODO : bater qual será esse campo
-                                UpdateIndex = UpdateIndexPersonPlanEnum.IPCA,//TODO : bater qual será esse campo
+                                InterestRate = "6",
+                                UpdateIndex = UpdateIndexPersonPlanEnum.IPCA,
                             },
-                            PremiumUpdateIndex = PremiumUpdateIndexEnum.IPCA,//TODO : bater qual será esse campo
+                            PremiumUpdateIndex = PremiumUpdateIndexEnum.IPCA,
                             AgeReframing = new PensionPlanAgeReframing
                             {
-                                ReframingCriterion = ReframingCriterionEnum.MUDANCA_FAIXA_ETARIA,//TODO : bater qual será esse campo
-                                ReframingPeriodicty = 0 //TODO : bater qual será esse campo
+                                ReframingCriterion = ReframingCriterionEnum.MUDANCA_FAIXA_ETARIA,
+                                ReframingPeriodicty = 0 
                             },
-                            FinancialRegimeContractType = RegimeContractTypeEnum.CAPITALIZACAO,//TODO : bater qual será esse campo
+                            FinancialRegimeContractType = RegimeContractTypeEnum.CAPITALIZACAO,
                             Reclaim = new PensionPlanReclaim
                             {
                                 ReclaimTable = new PensionPlanReclaimTable
                                 {
-                                    InitialMonthRange = 1,//TODO : bater qual será esse campo
-                                    FinalMonthRange = 12,//TODO : bater qual será esse campo
-                                    Percentage = "0"//TODO : bater qual será esse campo
+                                    InitialMonthRange = 1,
+                                    FinalMonthRange = 12,
+                                    Percentage = "0"
                                 },
-                                DifferentiatePercentage = "",//TODO : bater qual será esse campo
-                                GracePeriod = "60"//TODO : bater qual será esse campo
+                                DifferentiatePercentage = "",
+                                GracePeriod = "60"
                             },
-                            OtherGuarateedValues = OtherGuarateedValuesEnum.NAO_APLICA,//TODO : bater qual será esse campo
-                            ProfitModality = ProfitModalityEnum.FORMA_RENDA,//TODO : bater qual será esse campo
-                            ContributionPayment = new PensionPlanContributionPayment
-                            {
-                                ContributionPaymentMethod = ContributionPaymentMethodEnum.BOLETO_BANCARIO,//TODO : bater qual será esse campo
-                                ContributionPeriodicity = ContributionPeriodicityEnum.ANUAL//TODO : bater qual será esse campo
-                            },
+                            OtherGuarateedValues = OtherGuarateedValuesEnum.NAO_APLICA,
+                            ProfitModality = product.Modalidade_Indenizacao == "PAGAMENTO_UNICO" ? ProfitModalityEnum.PAGAMENTO_UNICO : ProfitModalityEnum.FORMA_RENDA,
+                            ContributionPayment = new PensionPlanContributionPayment(),
                             ContributionTax = "",
                             MinimunRequirement = new PensionPlanMinimunRequirement
                             {
                                 MinRequirementContractType = product.TIPO_PESSOA == "PF" ? RequirementContractTypeEnum.INDIVIDUAL : RequirementContractTypeEnum.COLETIVO,//TODO : bater qual será esse campo
-                                MinRequirementContract = ""//TODO : bater qual será esse campo
+                                MinRequirementContract = ""
                             },
-                            TargetAudiance = TargetAudianceEnum.PESSOA_JURIDICA//TODO : Esta vindo string do API product.TIPO_PESSOA
+                            TargetAudiance = TargetAudianceEnum.PESSOA_JURIDICA
 
                         });
                     }
@@ -114,70 +108,58 @@ namespace Caixa.OpenInsurence.Service.Services
                             Name = product.NOME_PRODUTO,
                             Code = product.COD_PRODUTO,
                             Modality = ModalityEnum.PECULIO, //TODO : bater qual será esse campo
-                            PensionPlanCoverages = new List<PensionPlanCoverage>(),//TODO : bater qual será esse campo
-                            Additional = (AdditionalEnum)Convert.ToInt16(product.COD_PRODUTO),//TODO : esta correto ?
-                            AdditionalOthers = new List<string>(),//TODO : bater qual será esse campo
-                            AssistanceTypes = AssistanceTypeEnum.AUTOMOVEL,//TODO : bater qual será esse campo
-                            AssistanceTypesOthers = new List<string>(),//TODO : bater qual será esse campo
+                            PensionPlanCoverages = "Aposentadoria",
+                            Additional = (AdditionalEnum)Convert.ToInt16(product.COD_PRODUTO),
+                            AdditionalOthers = new List<string>(),
+                            AssistanceTypes = AssistanceTypeEnum.N_A,
+                            AssistanceTypesOthers = new List<string>(),
                             TermsAndConditions = new PensionPlanTerm
                             {
                                 SusepProcessNumber = product.COD_SUSEP,
-                                Definition = "" //TODO : bater qual será esse campo
+                                Definition = product.DESCRICAO_COD_FUNDO
                             },
                             UpdatePMBaC = new PensionPlanUpdatePMBaC
                             {
-                                InterestRate = "0",//TODO : bater qual será esse campo
-                                UpdateIndex = UpdateIndexPersonPlanEnum.FINANCEIRA,//TODO : bater qual será esse campo
+                                InterestRate = "6",
+                                UpdateIndex = UpdateIndexPersonPlanEnum.IPCA,
                             },
-                            PremiumUpdateIndex = PremiumUpdateIndexEnum.IGPM,//TODO : bater qual será esse campo
+                            PremiumUpdateIndex = PremiumUpdateIndexEnum.IPCA,
                             AgeReframing = new PensionPlanAgeReframing
                             {
-                                ReframingCriterion = ReframingCriterionEnum.NAO_APLICAVEL,//TODO : bater qual será esse campo
-                                ReframingPeriodicty = 0 //TODO : bater qual será esse campo
+                                ReframingCriterion = ReframingCriterionEnum.MUDANCA_FAIXA_ETARIA,
+                                ReframingPeriodicty = 0
                             },
-                            FinancialRegimeContractType = RegimeContractTypeEnum.CAPITALIZACAO,//TODO : bater qual será esse campo
+                            FinancialRegimeContractType = RegimeContractTypeEnum.CAPITALIZACAO,
                             Reclaim = new PensionPlanReclaim
                             {
                                 ReclaimTable = new PensionPlanReclaimTable
                                 {
-                                    InitialMonthRange = 0,//TODO : bater qual será esse campo
-                                    FinalMonthRange = 0,//TODO : bater qual será esse campo
-                                    Percentage = ""//TODO : bater qual será esse campo
+                                    InitialMonthRange = 1,
+                                    FinalMonthRange = 12,
+                                    Percentage = "0"
                                 },
-                                DifferentiatePercentage = "",//TODO : bater qual será esse campo
-                                GracePeriod = ""//TODO : bater qual será esse campo
+                                DifferentiatePercentage = "",
+                                GracePeriod = "60"
                             },
-                            OtherGuarateedValues = OtherGuarateedValuesEnum.NAO_APLICA,//TODO : bater qual será esse campo
-                            ProfitModality = ProfitModalityEnum.FORMA_RENDA,//TODO : bater qual será esse campo
-                            ContributionPayment = new PensionPlanContributionPayment
-                            {
-                                ContributionPaymentMethod = ContributionPaymentMethodEnum.BOLETO_BANCARIO,//TODO : bater qual será esse campo
-                                ContributionPeriodicity = ContributionPeriodicityEnum.ANUAL//TODO : bater qual será esse campo
-                            },
+                            OtherGuarateedValues = OtherGuarateedValuesEnum.NAO_APLICA,
+                            ProfitModality = product.Modalidade_Indenizacao == "PAGAMENTO_UNICO" ? ProfitModalityEnum.PAGAMENTO_UNICO : ProfitModalityEnum.FORMA_RENDA,
+                            ContributionPayment = new PensionPlanContributionPayment(),
                             ContributionTax = "",
                             MinimunRequirement = new PensionPlanMinimunRequirement
                             {
-                                MinRequirementContractType = RequirementContractTypeEnum.INDIVIDUAL,//TODO : bater qual será esse campo
-                                MinRequirementContract = ""//TODO : bater qual será esse campo
+                                MinRequirementContractType = product.TIPO_PESSOA == "PF" ? RequirementContractTypeEnum.INDIVIDUAL : RequirementContractTypeEnum.COLETIVO,//TODO : bater qual será esse campo
+                                MinRequirementContract = ""
                             },
-                            TargetAudiance = TargetAudianceEnum.PESSOA_JURIDICA//TODO : Esta vindo string do API product.TIPO_PESSOA
-
+                            TargetAudiance = TargetAudianceEnum.PESSOA_JURIDICA
                         });
                     }
 
                 }
 
-
-                //var pensionplan = responseServiceCaixa.dados.Select(x => new PensionPlanCompany
-                //{
-                //   Name = DateTime.Now.ToLongTimeString(),
-
-                //}).ToList();
-
-                //response.Data.Companies.AddRange(pensionplan);
+                response.Data.Companies = response.Data.Companies.Skip(4).Take(20).ToList();
 
                 response.MetaPaginated.TotalPages = request.Page;
-                response.MetaPaginated.TotalRecords = request.PageSize;
+                response.MetaPaginated.TotalRecords = request.PageSize;                
 
                 return new PensionPlanDTO() 
                 {

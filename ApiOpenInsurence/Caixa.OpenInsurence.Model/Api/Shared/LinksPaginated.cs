@@ -12,5 +12,13 @@ namespace Caixa.OpenInsurence.Model.Api.Shared
         public string Next { get; set; }
         public string Las { get; set; }
 
+        public LinksPaginated(string URL)
+        {
+            Self = URL;
+            First = URL;
+            Prev = URL;
+            Next = URL;
+            Las = URL;            
+        }
     }
 }

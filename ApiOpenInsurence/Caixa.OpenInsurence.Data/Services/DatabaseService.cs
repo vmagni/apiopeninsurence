@@ -61,6 +61,27 @@ namespace Caixa.OpenInsurence.Data.Services
             return JsonConvert.DeserializeObject<ProdutosVidaPfCompletoResponse>(responseData.Result);
         }
 
+        public async Task<ProdutosVidaPfCompletoResponse> GetProdutosVidaPf()
+        {
+            var token = await _tokenService.GenerateToken(TokenFunctionEnum.OPIN_ConsultaProdutosVidaPF);
+            var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultaProdutosVidaPF";
+
+
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+            //REQUEST
+            var client = new HttpClient(handler);
+
+            var json = JsonConvert.SerializeObject(token);
+
+            var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
+
+            var responseData = response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<ProdutosVidaPfCompletoResponse>(responseData.Result);
+        }
+
         public async Task<AgenciasCaixaResponse> GetAgenciasCaixa()
         {
             var token = await _tokenService.GenerateToken(TokenFunctionEnum.OPIN_ConsultarAgenciasCAIXA);

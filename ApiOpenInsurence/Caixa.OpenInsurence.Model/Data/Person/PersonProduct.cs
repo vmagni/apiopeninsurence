@@ -29,8 +29,19 @@ namespace Caixa.OpenInsurence.Model.Data.Person
         public IndemnityPaymentIncomeEnum IndemnityPaymentIncome { get; set; }
         public PersonPremiumPayment PremiumPayment { get; set; }
         public PersonMinimunRequirements MinimunRequirements { get; set; }
-        public TargetAudiencePersonEnum TargetAudience { get; set; }      
+        public TargetAudiencePersonEnum TargetAudience { get; set; }
 
-
+        public PersonProduct()
+        {
+            Coverages = new List<Coverage>();
+            AssistanceTypeOthers = new List<string>();
+            TermsAndConditions = new List<PersonTermsAndCondition>();
+            PmbacRemuneration = new PersonPmbacRemuneration();
+            BenefitRecalculation = new PersonBenefitRecalculation();
+            AgeAdjustment = new PersonAgeAdjustment();
+            Reclaim = new PersonReclaim();
+            PremiumPayment = new PersonPremiumPayment();
+            MinimunRequirements = new PersonMinimunRequirements();
+        }
     }
 }

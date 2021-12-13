@@ -93,7 +93,11 @@ namespace Caixa.OpenInsurence.Service.Services
                     response.Data.Companies.Add(company);
                 }
             }
-            response.Meta.TotalRecords = count;
+            //response.Meta.TotalRecords = count;
+
+            response.Meta.TotalPages = request.Page;
+            response.Meta.TotalRecords = request.PageSize;
+
             return response;
         }
 

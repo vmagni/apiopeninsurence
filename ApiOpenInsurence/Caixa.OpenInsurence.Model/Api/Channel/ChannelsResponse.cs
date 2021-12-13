@@ -17,7 +17,7 @@ namespace Caixa.OpenInsurence.Model.Api
         public BranchChannelResponse()
         {
             Data = new BranchBrand();
-            Links = new LinksPaginated();
+            Links = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/channels");
             Meta = new MetaPaginated();
         }
     }
@@ -33,7 +33,7 @@ namespace Caixa.OpenInsurence.Model.Api
         public ElectronicChannelResponse()
         {
             Data = new ElectronicChannelBrand();
-            Links = new LinksPaginated();
+            Links = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/channels");
             Meta = new MetaPaginated();
         }
     }
@@ -47,7 +47,7 @@ namespace Caixa.OpenInsurence.Model.Api
         public PhoneChannelResponse()
         {
             Data = new PhoneChannelCompany();
-            Links = new LinksPaginated();
+            Links = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/channels");
             Meta = new MetaPaginated();
         }
     }
