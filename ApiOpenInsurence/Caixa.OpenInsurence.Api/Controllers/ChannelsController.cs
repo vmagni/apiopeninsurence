@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Caixa.OpenInsurence.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("channels/v1")]
     public class ChannelsController : ControllerBase
     {
         private readonly IChannelsService _channelsService;
@@ -26,7 +26,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         /// Retorna as agências.
         /// </summary>
         [HttpPost]
-        [Route("Branches")]
+        [Route("branches")]
         [ProducesResponseType(typeof(BranchChannelResponse), 200)] //OK
         [ProducesResponseType(typeof(ResponseError), 400)] //OK
         [ProducesResponseType(typeof(ResponseError), 401)]
@@ -137,7 +137,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         /// Retorna os canais de atendimento eletrônico.
         /// </summary>
         [HttpPost]
-        [Route("Eletronic")]
+        [Route("electronic-channels")]
         [ProducesResponseType(typeof(BranchChannelResponse), 200)] //OK
         [ProducesResponseType(typeof(ResponseError), 400)] //OK
         [ProducesResponseType(typeof(ResponseError), 401)]
@@ -248,7 +248,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         /// Retorna os canais de atendimento telefônico.
         /// </summary>
         [HttpPost]
-        [Route("Phones")]
+        [Route("phones-channels")]
         [ProducesResponseType(typeof(BranchChannelResponse), 200)] //OK
         [ProducesResponseType(typeof(ResponseError), 400)] //OK
         [ProducesResponseType(typeof(ResponseError), 401)]
