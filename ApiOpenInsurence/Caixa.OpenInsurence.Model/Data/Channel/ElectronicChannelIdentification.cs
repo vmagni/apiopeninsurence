@@ -9,5 +9,10 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
     {
         public ElectronicChannelTypeEnum Type { get; set; }
         public List<string> Urls { get; set; }
+
+        public ElectronicChannelIdentification()
+        {
+            Urls = new List<string>();
+        }
     }
 }

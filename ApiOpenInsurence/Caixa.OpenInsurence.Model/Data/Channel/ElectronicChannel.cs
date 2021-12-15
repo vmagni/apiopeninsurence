@@ -8,5 +8,11 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
     {
         public ElectronicChannelIdentification Identification { get; set; }
         public List<ChannelService> Services { get; set; }
+
+        public ElectronicChannel()
+        {
+            Identification = new ElectronicChannelIdentification();
+            Services = new List<ChannelService>();
+        }
     }
 }

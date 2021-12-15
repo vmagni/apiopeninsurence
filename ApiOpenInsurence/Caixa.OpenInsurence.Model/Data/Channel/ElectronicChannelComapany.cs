@@ -12,6 +12,12 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
         public string CnpjNumber { get; set; }
         public List<string> UrlComplementaryList { get; set; }
         public List<ElectronicChannel> ElectronicChannels { get; set; }
+
+        public ElectronicChannelComapany()
+        {
+            UrlComplementaryList = new List<string>();
+            ElectronicChannels = new List<ElectronicChannel>();
+        }
         
     }
 }

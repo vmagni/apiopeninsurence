@@ -8,5 +8,10 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
     {
         public string Name { get; set; }
         public List<ElectronicChannelComapany> Companies { get; set; }
+
+        public ElectronicChannelBrand()
+        {
+            Companies = new List<ElectronicChannelComapany>();
+        }
     }
 }

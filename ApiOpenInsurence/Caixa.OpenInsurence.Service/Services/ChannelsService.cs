@@ -115,9 +115,17 @@ namespace Caixa.OpenInsurence.Service.Services
             var canais = responseServiceCaixa.dados;
 
             ElectronicChannelResponse response = new ElectronicChannelResponse();
+            response.Data.Name = "Caixa vida e previdência";
             int count = 0;
 
-            return null;
+
+
+            return new ElectronicChannelsDTO()
+            {
+                ResponseCode = 200,
+                ResponseMessage = "",
+                ElectronicChannelResponse = response
+            };
         }
 
         public async Task<ValidaResponseDTO> GetPhoneChannels(ApiRequest request)
