@@ -10,5 +10,6 @@ namespace Caixa.OpenInsurence.Data.Interfaces
         public Task<ProdutosPrevidenciaCompletoResponse> GetProdutosVidaPfCompleto();
         public Task<ProdutosVidaPfCompletoResponse> GetProdutosVidaPf();
         public Task<AgenciasCaixaResponse> GetAgenciasCaixa();
+        public Task<CanaisDigitaisResponse> GetCanaisDigitais();
     }
 }

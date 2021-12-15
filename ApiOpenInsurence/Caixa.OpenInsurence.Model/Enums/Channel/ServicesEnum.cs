@@ -47,6 +47,8 @@ namespace Caixa.OpenInsurence.Model.Enums.Channel
         [Description("2ª via de Documentos Contratuais")]
         SEGUNDA_VIA_DOCUMENTOS_CONTRATUAIS = 18,
         [Description("Sugestões e Elogios")]
-        SUGESTOES_ELOGIOS = 19
+        SUGESTOES_ELOGIOS = 19,
+        [Description("Atendimento ao Cliente")]
+        ATENDIMENTO_AO_CLIENTE = 20
     }
 }

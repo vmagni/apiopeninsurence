@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Caixa.OpenInsurence.Model.Enums.Channel
 {
-    public enum BranchTypesEnum
+    public enum BranchChannelTypeEnum
     {
         [Description("Agência")]
         AGENCIA = 1,

@@ -9,5 +9,12 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
         public PhoneChannelIdentification Identification { get; set; }
         public PhoneChannelServices Services { get; set; }
         public Availability Availability { get; set; }
+
+        public PhoneChannel()
+        {
+            Identification = new PhoneChannelIdentification();
+            Services = new PhoneChannelServices();
+            Availability = new Availability();
+        }
     }
 }

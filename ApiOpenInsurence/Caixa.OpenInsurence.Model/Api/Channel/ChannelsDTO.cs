@@ -21,4 +21,36 @@ namespace Caixa.OpenInsurence.Model.Api.Channel
         public BranchChannelResponse BranchChannelsResponse { get; set; }
     }
 
+    public class PhoneChannelsDTO : ValidaResponseDTO
+    {
+        private PhoneChannelsDTO channelsDTO;
+
+        public PhoneChannelsDTO()
+        {
+        }
+
+        public PhoneChannelsDTO(PhoneChannelsDTO channelsDTO)
+        {
+            this.channelsDTO = channelsDTO;
+        }
+
+        public PhoneChannelResponse PhoneChannelResponse { get; set; }
+    }
+
+    public class ElectronicChannelsDTO : ValidaResponseDTO
+    {
+        private ElectronicChannelsDTO channelsDTO;
+
+        public ElectronicChannelsDTO()
+        {
+        }
+
+        public ElectronicChannelsDTO(ElectronicChannelsDTO channelsDTO)
+        {
+            this.channelsDTO = channelsDTO;
+        }
+
+        public ElectronicChannelResponse ElectronicChannelResponse { get; set; }
+    }
+
 }

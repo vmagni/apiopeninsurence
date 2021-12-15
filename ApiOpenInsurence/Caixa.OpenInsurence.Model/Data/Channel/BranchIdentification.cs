@@ -9,7 +9,7 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
 {
     public class BranchIdentification
     {
-        public BranchTypesEnum Type { get; set; }
+        public BranchChannelTypeEnum Type { get; set; }
         public string Code { get; set; }
         public int CheckDigit { get; set; }
         public string Name { get; set; }

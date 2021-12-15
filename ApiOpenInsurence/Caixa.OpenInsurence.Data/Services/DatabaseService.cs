@@ -102,5 +102,26 @@ namespace Caixa.OpenInsurence.Data.Services
 
             return JsonConvert.DeserializeObject<AgenciasCaixaResponse>(responseData.Result);
         }
+
+        public async Task<CanaisDigitaisResponse> GetCanaisDigitais()
+        {
+            var token = await _tokenService.GenerateToken(TokenFunctionEnum.OPIN_ConsultarCanaisDigitais);
+            var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultarCanaisDigitais";
+
+
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+            //REQUEST
+            var client = new HttpClient(handler);
+
+            var json = JsonConvert.SerializeObject(token);
+
+            var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
+
+            var responseData = response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<CanaisDigitaisResponse>(responseData.Result);
+        }
     }
 }

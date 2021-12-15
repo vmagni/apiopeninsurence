@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Caixa.OpenInsurence.Model.Enums.Channel
 {
-    public enum ElectronicChannelTypesEnum
+    public enum ElectronicChannelTypeEnum
     {
         [Description("Internet")]
         INTERNET = 1,

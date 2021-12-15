@@ -7,7 +7,12 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
 {
     public class PhoneChannelIdentification
     {
-        public PhoneTypesEnum Type { get; set; }
+        public PhoneChannelTypeEnum Type { get; set; }
         public List<PhoneChannelPhone> Phones { get; set; }
+
+        public PhoneChannelIdentification()
+        {
+            Phones = new List<PhoneChannelPhone>();
+        }
     }
 }

@@ -10,6 +10,12 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
     {
         public List<AvailabilityStandards> Standards { get; set; }
         public bool IsPublicAccessAllowed { get; set; }
+        public string Exception { get; set; }
+
+        public Availability()
+        {
+            Standards = new List<AvailabilityStandards>();
+        }
 
     }
 
