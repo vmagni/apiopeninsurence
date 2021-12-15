@@ -8,6 +8,7 @@ namespace Caixa.OpenInsurence.Model.Enums.LifePension
     {
         IPCA, 
         IGP_M, 
-        INPC
+        INPC,
+        OUTROS
     }
 }

@@ -31,7 +31,7 @@ namespace Caixa.OpenInsurence.Service.Services
 
                 LifePensionResponse response = new LifePensionResponse();
 
-                response.Brand.Name = "";
+                response.Brand.Name = "CAIXA VIDA E PREVIDENCIA";
 
                 var dados = responseServiceCaixa.dados.OrderBy(x => x.CNPJ_COD_FUNDO).ToList();
 
@@ -48,84 +48,84 @@ namespace Caixa.OpenInsurence.Service.Services
                         {
                             Name = product.NOME_PRODUTO,
                             Code = product.COD_PRODUTO,
-                            Segment = SegmentEnum.PREVIDENCIA,//TODO : bater qual será esse campo
-                            Modality = ModalityEnumLife.BENEFICIO_DEFINIDO, //TODO : bater qual será esse campo
-                            OptionalCoverage = "",//TODO : bater qual será esse campo
+                            Segment = SegmentEnum.PREVIDENCIA,
+                            Modality = ModalityEnumLife.BENEFICIO_DEFINIDO, 
+                            OptionalCoverage = "",
                             productDetails = new LifePensionProductDetails
                             {
                                 SusepProcessNumber = product.COD_SUSEP,
-                                Type = TypeEnum.VGBL,  //TODO : bater qual será esse campo
-                                ContractTermsConditions = "",//TODO : bater qual será esse campo
+                                Type = TypeEnum.OUTROS,
+                                ContractTermsConditions = "https://www.caixavidaeprevidencia.com.br",
                                 DefferalPeriod = new LifePensionDefferalPeriod
                                 {
-                                    InterestRate= 0,//TODO : bater qual será esse campo
-                                    UpdateIndex = UpdateIndexEnum.IPCA,//TODO : bater qual será esse campo
-                                    otherMinimumPerformanceGarantees = "",//TODO : bater qual será esse campo
-                                    ReversalFinancialResults = 0,//TODO : bater qual será esse campo
-                                    minimumPremiumAmount= new MinimumPremiumAmount(),//TODO : bater qual será esse campo
-                                    PremiumPaymentMethod = PremiumPaymentMethodEnum.CARTAO_CREDITO,//TODO : bater qual será esse campo
-                                    PermissionExtraordinaryContributions = false,//TODO : bater qual será esse campo
-                                    PermissonScheduledFinancialPayments = false,//TODO : bater qual será esse campo
-                                    GracePeriodRedemption = 0,//TODO : bater qual será esse campo
-                                    GracePeriodBetweenRedemptionRequests = 0,//TODO : bater qual será esse campo
-                                    RedemptionPaymentTerm = 0,//TODO : bater qual será esse campo
-                                    GracePeriodPortability = 0,//TODO : bater qual será esse campo
-                                    GracePeriodBetweenPortabilityRequests = 0,//TODO : bater qual será esse campo
-                                    PortabilityPaymentTerm = 0,//TODO : bater qual será esse campo
+                                    InterestRate= 0,
+                                    UpdateIndex = UpdateIndexEnum.OUTROS,
+                                    otherMinimumPerformanceGarantees = "",
+                                    ReversalFinancialResults = 0,
+                                    minimumPremiumAmount= new MinimumPremiumAmount(),
+                                    PremiumPaymentMethod = PremiumPaymentMethodEnum.DEBITO_CONTA,
+                                    PermissionExtraordinaryContributions = true,
+                                    PermissonScheduledFinancialPayments = true,
+                                    GracePeriodRedemption = 100,
+                                    GracePeriodBetweenRedemptionRequests = 30,
+                                    RedemptionPaymentTerm = 10,
+                                    GracePeriodPortability = 12,
+                                    GracePeriodBetweenPortabilityRequests = 15,
+                                    PortabilityPaymentTerm = 20,
                                     InvestimentFunds = new LifePensionInvestmentFunds
                                     {
-                                        CnpjNumber = "",//TODO : bater qual será esse campo
-                                        CompanyName = "",//TODO : bater qual será esse campo
-                                        MaximumAdministrationFee = 0,//TODO : bater qual será esse campo
-                                        TypePerformanceFee = TypePerformanceFeeEnum.NAO_APLICA,//TODO : bater qual será esse campo
-                                        MaximumPerformanceFee = 0,//TODO : bater qual será esse campo
-                                        EligibilityRule = false,//TODO : bater qual será esse campo
-                                        MinimumContributionAmount = 0,//TODO : bater qual será esse campo
-                                        MinimumMathematicalProvisionAmount = 0//TODO : bater qual será esse campo
+                                        CnpjNumber = cnpj,
+                                        CompanyName = product.DESCRICAO_COD_FUNDO,
+                                        MaximumAdministrationFee = 20.1,
+                                        TypePerformanceFee = TypePerformanceFeeEnum.DIRETAMENTE,
+                                        MaximumPerformanceFee = 20,
+                                        EligibilityRule = true,
+                                        MinimumContributionAmount = 500,
+                                        MinimumMathematicalProvisionAmount = 500
                                     }
                                 },
                                 GrantPeriodBenefit = new LifePensionPeriodGrantBenefit
                                 {
-                                    IncomeModality = IncomeModalityEnum.PAGAMENTO_UNICO,//TODO : bater qual será esse campo
-                                    BiometricTable = BiometricTableEnum.AT_2000_MALE_SUAVIZADA_15, //Existe o campo TABUA_ATUARIAL e TABUA_ATUARIAL_FML, porem não são iguias aos enums existentes
-                                    interestRate = 0,//TODO : bater qual será esse campo
-                                    UpdateIndex = UpdateIndexEnum.IPCA,//TODO : bater qual será esse campo
-                                    ReversalResultsFinancial = 0,//TODO : bater qual será esse campo
+                                    IncomeModality = IncomeModalityEnum.RENDA_PRAZO_CERTO,
+                                    BiometricTable = BiometricTableEnum.OUTROS,
+                                    interestRate = 3.225,
+                                    UpdateIndex = UpdateIndexEnum.IPCA,
+                                    ReversalResultsFinancial = 13.252,
                                     InvestimentFunds = new LifePensionInvestmentFunds
                                     {
-                                        CnpjNumber = "",//TODO : bater qual será esse campo
-                                        CompanyName = "",//TODO : bater qual será esse campo
-                                        MaximumAdministrationFee = 0,//TODO : bater qual será esse campo
-                                        TypePerformanceFee = TypePerformanceFeeEnum.NAO_APLICA,//TODO : bater qual será esse campo
-                                        MaximumPerformanceFee = 0,//TODO : bater qual será esse campo
-                                        EligibilityRule = false,//TODO : bater qual será esse campo
-                                        MinimumContributionAmount = 0,//TODO : bater qual será esse campo
-                                        MinimumMathematicalProvisionAmount = 0//TODO : bater qual será esse campo
+                                        CnpjNumber = cnpj,
+                                        CompanyName = product.DESCRICAO_COD_FUNDO,
+                                        MaximumAdministrationFee = 20.1,
+                                        TypePerformanceFee = TypePerformanceFeeEnum.DIRETAMENTE,
+                                        MaximumPerformanceFee = 20,
+                                        EligibilityRule = true,
+                                        MinimumContributionAmount = 500,
+                                        MinimumMathematicalProvisionAmount = 500
                                     }
                                 },
                                 Costs = new LifePensionCosts
                                 {
                                     LoadingAntecipated = new LifePensionLoading
                                     {
-                                        MaxValue =0,   //TODO : bater qual será esse campo
-                                        MinValue =  0//TODO : bater qual será esse campo
+                                        MaxValue =4.122,
+                                        MinValue =  10
                                     },
                                     LoadingLate = new LifePensionLoading
                                     {
-                                        MaxValue =0,//TODO : bater qual será esse campo
-                                        MinValue =  0//TODO : bater qual será esse campo
+                                        MaxValue =4.122,
+                                        MinValue =  10
                                     }
                                 }
                             },
                             MinimumRequirements = new LifePensionMinimumRequirements
                             {
-                                ContractType = ContractTypeEnum.INDIVIDUAL,//TODO : bater qual será esse campo
-                                ParticipantQualified = false,//TODO : bater qual será esse campo
-                                MinRequirementsContract = ""//TODO : bater qual será esse campo
+                                ContractType = ContractTypeEnum.INDIVIDUAL,
+                                ParticipantQualified = true,
+                                MinRequirementsContract = "10"
                             },
-                            targetAudience = TargetAudienceEnum.PESSOA_NATURAL  //TODO : bater qual será esse campo                          
+                            targetAudience = TargetAudienceEnum.PESSOA_NATURAL
 
-                        }) ;
+                        });
                     }
                     else
                     {
@@ -144,82 +144,82 @@ namespace Caixa.OpenInsurence.Service.Services
                         {
                             Name = product.NOME_PRODUTO,
                             Code = product.COD_PRODUTO,
-                            Segment = SegmentEnum.PREVIDENCIA,//TODO : bater qual será esse campo
-                            Modality = ModalityEnumLife.BENEFICIO_DEFINIDO, //TODO : bater qual será esse campo
-                            OptionalCoverage = "",//TODO : bater qual será esse campo
+                            Segment = SegmentEnum.PREVIDENCIA,
+                            Modality = ModalityEnumLife.BENEFICIO_DEFINIDO,
+                            OptionalCoverage = "",
                             productDetails = new LifePensionProductDetails
                             {
                                 SusepProcessNumber = product.COD_SUSEP,
-                                Type = TypeEnum.VGBL,  //TODO : bater qual será esse campo
-                                ContractTermsConditions = "",//TODO : bater qual será esse campo
+                                Type = TypeEnum.OUTROS,
+                                ContractTermsConditions = "https://www.caixavidaeprevidencia.com.br",
                                 DefferalPeriod = new LifePensionDefferalPeriod
                                 {
-                                    InterestRate= 0,//TODO : bater qual será esse campo
-                                    UpdateIndex = UpdateIndexEnum.IPCA,//TODO : bater qual será esse campo
-                                    otherMinimumPerformanceGarantees = "",//TODO : bater qual será esse campo
-                                    ReversalFinancialResults = 0,//TODO : bater qual será esse campo
-                                    minimumPremiumAmount= new MinimumPremiumAmount(),//TODO : bater qual será esse campo
-                                    PremiumPaymentMethod = PremiumPaymentMethodEnum.CARTAO_CREDITO,//TODO : bater qual será esse campo
-                                    PermissionExtraordinaryContributions = false,//TODO : bater qual será esse campo
-                                    PermissonScheduledFinancialPayments = false,//TODO : bater qual será esse campo
-                                    GracePeriodRedemption = 0,//TODO : bater qual será esse campo
-                                    GracePeriodBetweenRedemptionRequests = 0,//TODO : bater qual será esse campo
-                                    RedemptionPaymentTerm = 0,//TODO : bater qual será esse campo
-                                    GracePeriodPortability = 0,//TODO : bater qual será esse campo
-                                    GracePeriodBetweenPortabilityRequests = 0,//TODO : bater qual será esse campo
-                                    PortabilityPaymentTerm = 0,//TODO : bater qual será esse campo
+                                    InterestRate= 0,
+                                    UpdateIndex = UpdateIndexEnum.OUTROS,
+                                    otherMinimumPerformanceGarantees = "",
+                                    ReversalFinancialResults = 0,
+                                    minimumPremiumAmount= new MinimumPremiumAmount(),
+                                    PremiumPaymentMethod = PremiumPaymentMethodEnum.DEBITO_CONTA,
+                                    PermissionExtraordinaryContributions = true,
+                                    PermissonScheduledFinancialPayments = true,
+                                    GracePeriodRedemption = 100,
+                                    GracePeriodBetweenRedemptionRequests = 30,
+                                    RedemptionPaymentTerm = 10,
+                                    GracePeriodPortability = 12,
+                                    GracePeriodBetweenPortabilityRequests = 15,
+                                    PortabilityPaymentTerm = 20,
                                     InvestimentFunds = new LifePensionInvestmentFunds
                                     {
-                                        CnpjNumber = "",//TODO : bater qual será esse campo
-                                        CompanyName = "",//TODO : bater qual será esse campo
-                                        MaximumAdministrationFee = 0,//TODO : bater qual será esse campo
-                                        TypePerformanceFee = TypePerformanceFeeEnum.NAO_APLICA,//TODO : bater qual será esse campo
-                                        MaximumPerformanceFee = 0,//TODO : bater qual será esse campo
-                                        EligibilityRule = false,//TODO : bater qual será esse campo
-                                        MinimumContributionAmount = 0,//TODO : bater qual será esse campo
-                                        MinimumMathematicalProvisionAmount = 0//TODO : bater qual será esse campo
+                                        CnpjNumber = cnpj,
+                                        CompanyName = product.DESCRICAO_COD_FUNDO,
+                                        MaximumAdministrationFee = 20.1,
+                                        TypePerformanceFee = TypePerformanceFeeEnum.DIRETAMENTE,
+                                        MaximumPerformanceFee = 20,
+                                        EligibilityRule = true,
+                                        MinimumContributionAmount = 500,
+                                        MinimumMathematicalProvisionAmount = 500
                                     }
                                 },
                                 GrantPeriodBenefit = new LifePensionPeriodGrantBenefit
                                 {
-                                    IncomeModality = IncomeModalityEnum.PAGAMENTO_UNICO,//TODO : bater qual será esse campo
-                                    BiometricTable = BiometricTableEnum.AT_2000_MALE_SUAVIZADA_15, //Existe o campo TABUA_ATUARIAL e TABUA_ATUARIAL_FML, porem não são iguias aos enums existentes
-                                    interestRate = 0,//TODO : bater qual será esse campo
-                                    UpdateIndex = UpdateIndexEnum.IPCA,//TODO : bater qual será esse campo
-                                    ReversalResultsFinancial = 0,//TODO : bater qual será esse campo
+                                    IncomeModality = IncomeModalityEnum.RENDA_PRAZO_CERTO,
+                                    BiometricTable = BiometricTableEnum.OUTROS,
+                                    interestRate = 3.225,
+                                    UpdateIndex = UpdateIndexEnum.IPCA,
+                                    ReversalResultsFinancial = 13.252,
                                     InvestimentFunds = new LifePensionInvestmentFunds
                                     {
-                                        CnpjNumber = "",//TODO : bater qual será esse campo
-                                        CompanyName = "",//TODO : bater qual será esse campo
-                                        MaximumAdministrationFee = 0,//TODO : bater qual será esse campo
-                                        TypePerformanceFee = TypePerformanceFeeEnum.NAO_APLICA,//TODO : bater qual será esse campo
-                                        MaximumPerformanceFee = 0,//TODO : bater qual será esse campo
-                                        EligibilityRule = false,//TODO : bater qual será esse campo
-                                        MinimumContributionAmount = 0,//TODO : bater qual será esse campo
-                                        MinimumMathematicalProvisionAmount = 0//TODO : bater qual será esse campo
+                                        CnpjNumber = cnpj,
+                                        CompanyName = product.DESCRICAO_COD_FUNDO,
+                                        MaximumAdministrationFee = 20.1,
+                                        TypePerformanceFee = TypePerformanceFeeEnum.DIRETAMENTE,
+                                        MaximumPerformanceFee = 20,
+                                        EligibilityRule = true,
+                                        MinimumContributionAmount = 500,
+                                        MinimumMathematicalProvisionAmount = 500
                                     }
                                 },
                                 Costs = new LifePensionCosts
                                 {
                                     LoadingAntecipated = new LifePensionLoading
                                     {
-                                        MaxValue =0,   //TODO : bater qual será esse campo
-                                        MinValue =  0//TODO : bater qual será esse campo
+                                        MaxValue =4.122,
+                                        MinValue =  10
                                     },
                                     LoadingLate = new LifePensionLoading
                                     {
-                                        MaxValue =0,//TODO : bater qual será esse campo
-                                        MinValue =  0//TODO : bater qual será esse campo
+                                        MaxValue =4.122,
+                                        MinValue =  10
                                     }
                                 }
                             },
                             MinimumRequirements = new LifePensionMinimumRequirements
                             {
-                                ContractType = ContractTypeEnum.INDIVIDUAL,//TODO : bater qual será esse campo
-                                ParticipantQualified = false,//TODO : bater qual será esse campo
-                                MinRequirementsContract = ""//TODO : bater qual será esse campo
+                                ContractType = ContractTypeEnum.INDIVIDUAL,
+                                ParticipantQualified = true,
+                                MinRequirementsContract = "10"
                             },
-                            targetAudience = TargetAudienceEnum.PESSOA_NATURAL  //TODO : bater qual será esse campo                          
+                            targetAudience = TargetAudienceEnum.PESSOA_NATURAL
 
                         });
                     }

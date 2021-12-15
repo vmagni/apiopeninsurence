@@ -9,9 +9,9 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
     {
         public IncomeModalityEnum IncomeModality { get; set; }
         public BiometricTableEnum BiometricTable { get; set; }
-        public long interestRate { get; set; }
+        public double interestRate { get; set; }
         public UpdateIndexEnum UpdateIndex { get; set; }
-        public long ReversalResultsFinancial { get; set; }
+        public double ReversalResultsFinancial { get; set; }
         public LifePensionInvestmentFunds InvestimentFunds { get; set; }
 
         public LifePensionPeriodGrantBenefit()

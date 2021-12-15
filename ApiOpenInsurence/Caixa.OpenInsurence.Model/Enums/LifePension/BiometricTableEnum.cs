@@ -15,6 +15,7 @@ namespace Caixa.OpenInsurence.Model.Enums.LifePension
         AT_83_MALE, 
         AT_83_FEMALE, 
         BR_EMSSB_MALE, 
-        BR_EMSSB_FEMALE
+        BR_EMSSB_FEMALE,
+        OUTROS
     }
 }

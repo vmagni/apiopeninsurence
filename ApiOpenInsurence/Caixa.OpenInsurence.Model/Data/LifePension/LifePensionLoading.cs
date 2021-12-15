@@ -6,7 +6,7 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
 {
     public class LifePensionLoading
     {
-        public long MinValue { get; set; }
-        public long MaxValue { get; set; }
+        public double MinValue { get; set; }
+        public double MaxValue { get; set; }
     }
 }
