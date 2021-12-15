@@ -248,7 +248,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         /// Retorna os canais de atendimento telefônico.
         /// </summary>
         [HttpPost]
-        [Route("Phone")]
+        [Route("Phones")]
         [ProducesResponseType(typeof(BranchChannelResponse), 200)] //OK
         [ProducesResponseType(typeof(ResponseError), 400)] //OK
         [ProducesResponseType(typeof(ResponseError), 401)]
