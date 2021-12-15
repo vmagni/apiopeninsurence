@@ -18,11 +18,11 @@ namespace Caixa.OpenInsurence.Data.Services
             _tokenService = tokenService;
         }
 
-        public async Task<ProdutosPrevidenciaCompletoResponse> GetProdutosPrevidenciaCompleto()
+        public async Task<ProdutosPrevidenciaCompletoResponse> GetProdutosPrevidenciaNovosFundos()
         {
             var token = await _tokenService.GenerateToken(TokenFunctionEnum.OPIN_ConsultaProdutosPrevidenciaCompleto);
             
-            var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultaProdutosPrevidenciaCompleto";
+            var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultaProdutosPrevidenciaNovosFundos?SUCESSO=l&dados=l&mensagem=l";
 
             
             HttpClientHandler handler = new HttpClientHandler();
@@ -40,10 +40,10 @@ namespace Caixa.OpenInsurence.Data.Services
             return JsonConvert.DeserializeObject<ProdutosPrevidenciaCompletoResponse>(responseData.Result);
         }
 
-        public async Task<ProdutosVidaPfCompletoResponse> GetProdutosVidaPfCompleto()
+        public async Task<ProdutosPrevidenciaCompletoResponse> GetProdutosVidaPfCompleto()
         {
             var token = await _tokenService.GenerateToken(TokenFunctionEnum.OPIN_ConsultaProdutosVidaPF);
-            var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultaProdutosVidaPF";
+            var url = "https://appprevhm.caixavidaeprevidencia.com.br/webapi/api/OpenInsurance/OPIN_ConsultaProdutosPrevidenciaCompleto";
 
 
             HttpClientHandler handler = new HttpClientHandler();
@@ -58,7 +58,7 @@ namespace Caixa.OpenInsurence.Data.Services
 
             var responseData = response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<ProdutosVidaPfCompletoResponse>(responseData.Result);
+            return JsonConvert.DeserializeObject<ProdutosPrevidenciaCompletoResponse>(responseData.Result);
         }
 
         public async Task<ProdutosVidaPfCompletoResponse> GetProdutosVidaPf()

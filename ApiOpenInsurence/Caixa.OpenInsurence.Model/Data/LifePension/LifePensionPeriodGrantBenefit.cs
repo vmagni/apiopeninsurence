@@ -13,5 +13,10 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
         public UpdateIndexEnum UpdateIndex { get; set; }
         public long ReversalResultsFinancial { get; set; }
         public LifePensionInvestmentFunds InvestimentFunds { get; set; }
+
+        public LifePensionPeriodGrantBenefit()
+        {
+            InvestimentFunds = new LifePensionInvestmentFunds();
+        }
     }
 }

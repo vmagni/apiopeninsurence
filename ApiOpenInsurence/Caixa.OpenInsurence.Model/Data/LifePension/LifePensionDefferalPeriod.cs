@@ -23,6 +23,10 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
         public int PortabilityPaymentTerm { get; set; }
         public LifePensionInvestmentFunds InvestimentFunds { get; set; }
 
-
+        public LifePensionDefferalPeriod()
+        {
+            minimumPremiumAmount = new MinimumPremiumAmount();
+            InvestimentFunds = new LifePensionInvestmentFunds();
+        }
     }
 }

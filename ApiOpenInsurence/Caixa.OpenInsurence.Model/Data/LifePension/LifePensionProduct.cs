@@ -15,6 +15,11 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
         public LifePensionProductDetails productDetails { get; set; }
         public LifePensionMinimumRequirements MinimumRequirements { get; set; }
         public TargetAudienceEnum targetAudience { get; set; }
-        
+
+        public LifePensionProduct()
+        {
+            productDetails = new LifePensionProductDetails();
+            MinimumRequirements = new LifePensionMinimumRequirements();
+        }
     }
 }

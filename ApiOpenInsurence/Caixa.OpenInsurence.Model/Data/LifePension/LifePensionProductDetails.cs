@@ -13,7 +13,13 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
         public LifePensionDefferalPeriod DefferalPeriod { get; set; }
         public LifePensionPeriodGrantBenefit GrantPeriodBenefit { get; set; }
         public LifePensionCosts Costs { get; set; }
-        
+
+        public LifePensionProductDetails()
+        {
+            DefferalPeriod = new LifePensionDefferalPeriod();
+            GrantPeriodBenefit = new LifePensionPeriodGrantBenefit();
+            Costs = new LifePensionCosts();
+        }
 
     }
 }

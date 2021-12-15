@@ -1,6 +1,7 @@
 ﻿using Caixa.OpenInsurence.Data.Interfaces;
 using Caixa.OpenInsurence.Model.Api.Person;
 using Caixa.OpenInsurence.Model.Api.Shared;
+using Caixa.OpenInsurence.Model.Data.Helpers;
 using Caixa.OpenInsurence.Model.Data.Person;
 using Caixa.OpenInsurence.Model.Enums.Person;
 using Caixa.OpenInsurence.Service.Interfaces;
@@ -26,85 +27,90 @@ namespace Caixa.OpenInsurence.Service.Services
             {
                 var responseServiceCaixa = await _databaseService.GetProdutosVidaPf();
 
-
                 PersonResponse response = new PersonResponse();
 
                 var dados = responseServiceCaixa.dados.Take(1).ToList();
 
-                response.Brand.Name = ""; // Deixar fixo vazio ?
+                response.Brand.Name = "Caixa Livre Previdência";
 
-                response.Brand.companies.Name = "";// Deixar fixo vazio ?
-                response.Brand.companies.CnpjNumber = "";// Deixar fixo vazio ?
+                response.Brand.companies.Name = "Caixa Livre Previdência";
+                response.Brand.companies.CnpjNumber = "38.122.278/0001-04";
 
                 foreach (var product in dados)
                 {
+                    var converages = ReturnCoverages(product);
 
                     response.Brand.companies.PersonProducts.Add(new PersonProduct
                     {
-                        Name = product.SEGUROS == null ? "" : product.SEGUROS,//Algusn seguros vem sem nome, o que fazer ?
+                        Name = product.SEGUROS == null ? "" : product.SEGUROS,
                         Code = product.COD_PRODUTO,
-                        Category = CategoryEnum.TRADICIONAL, // Deixar fixo sempre Tradicional ?
-                        InsuranceModality = InsuranceModalityEnum.FUNERAL,// Deixar fixo sempre Funeral ?
-                        Coverages = new List<Coverage>(),//O que colocar ?
+                        Category = CategoryEnum.TRADICIONAL,
+                        InsuranceModality = InsuranceModalityEnum.FUNERAL,
+                        Coverages = converages,
                         AssistanceType = AssistanceTypePersonEnum.FUNERAL,//Deixar fixo sempre Funeral ?
-                        Additional = AdditionalPersonEnum.NAO_HA,//Deixar fixo sempre NAO_HA ?
-                        AssistanceTypeOthers = new List<string>(),//Deixar fixo Lista Fazia ?
-                        TermsAndConditions = new List<PersonTermsAndCondition>(),// existe o campo PROCESSO_SUSEP, porém não é um lista
-                        GlobalCapital = false, //Deixar fixo false ?
-                        Validity = ValidityEnum.VITALICIA,//Deixar fixo VITALICIA ?
+                        Additional = product.SERV_SORTEIOS == "S" ? AdditionalPersonEnum.SORTEIO : AdditionalPersonEnum.NAO_HA,
+                        AssistanceTypeOthers = new List<string>(),
+                        TermsAndConditions = new List<PersonTermsAndCondition> { new PersonTermsAndCondition 
+                        { 
+                            SusepProcessNumber = product.PROCESSO_SUSEP, 
+                            Sefinition="" 
+
+                        } },
+                        GlobalCapital = false,
+                        Validity = product.VIGENCIA_APOLICE != "" ? ValidityEnum.TEMPORARIA_PRAZO_FIXO : ValidityEnum.TEMPORARIA_INTERMITENTE,
                         PmbacRemuneration = new PersonPmbacRemuneration
                         {
-                            CapitalizationMethod = CapitalizationMethodEnum.FINANCEIRA,//Deixar fixo FINANCEIRA ?
-                            InterestRate = 0,//Deixar fixo 0 ?
-                            PmbacUpdateIndex = PmbacUpdateIndexEnum.IPCA //Deixar fixo IPCA ?
+                            CapitalizationMethod = CapitalizationMethodEnum.FINANCEIRA,
+                            InterestRate = 0,
+                            PmbacUpdateIndex = PmbacUpdateIndexEnum.IPCA
                         },
                         BenefitRecalculation = new PersonBenefitRecalculation
                         {
-                            BenefitRecalculationCriteria = BenefitRecalculationCriteriaEnum.INDICE,//Deixar fixo INDICE ?
-                            BenefitUpdateIndex = BenefitUpdateIndexEnum.IPCA //Deixar fixo IPCA ?
+                            BenefitRecalculationCriteria = BenefitRecalculationCriteriaEnum.INDICE,
+                            BenefitUpdateIndex = BenefitUpdateIndexEnum.IPCA
                         },
                         AgeAdjustment = new PersonAgeAdjustment
                         {
-                            Criterion = CriterionEnum.APOS_PERIODO_EM_ANOS,//Deixar fixo APOS_PERIODO_EM_ANOS ?
-                            Frequency = (int)FrequencyEnum.DIARIA,//Deixar fixo DIARIA == 0 ?
+                            Criterion = CriterionEnum.APOS_PERIODO_EM_ANOS,
+                            Frequency = (int)FrequencyEnum.DIARIA,
                         },
-                        ContractType = ContractTypePersonEnum.REPARTICAO_SIMPLES, //Deixar fixo REPARTICAO_SIMPLES ?
+                        ContractType = ContractTypePersonEnum.REPARTICAO_SIMPLES,
                         Reclaim = new PersonReclaim
                         {
                             ReclaimTable = new PersonReclaimTable
                             {
-                                InitialMonthRange = 1,//Deixar fixo 1 ?
-                                FinalMonthRange = 12,//Deixar fixo 12 ?
-                                Percentage = 0 //Deixar fixo 0 ?
+                                InitialMonthRange = 0,
+                                FinalMonthRange = 0,
+                                Percentage = 0
                             },
-                            DifferentiatedPercentage = "",//Deixar fixo vazio ?
+                            DifferentiatedPercentage = "",
                             GracePeriod = new PersonCovaregeAttibutesDetails
                             {
-                                Amount = 60,//Deixar fixo 60 ?
+                                Amount = 0,
                                 unit = new PersonCovaregeAttibutesDetailsUnit
                                 {
-                                    Code ="R$",//Deixar fixo R$ ?
-                                    Description = ""//Deixar fixo vazio ?
+                                    Code ="",
+                                    Description = ""
                                 }
                             }
 
                         },
-                        OtherGuaranteedValues = OtherGuaranteedValuesEnum.SALDAMENTO,//Deixar fixo SALDAMENTO ?
-                        PortabilityGraceTime = 0,//Deixar fixo 0 ?
-                        IndemnityPaymentMethod = IndemnityPaymentMethodEnum.UNICO,//Deixar fixo UNICO ?
-                        IndemnityPaymentIncome = IndemnityPaymentIncomeEnum.CERTA,//Deixar fixo CERTA ?
+                        OtherGuaranteedValues = OtherGuaranteedValuesEnum.NAO_SE_APLICA,
+                        PortabilityGraceTime = 0,
+                        IndemnityPaymentMethod = IndemnityPaymentMethodEnum.UNICO,
+                        IndemnityPaymentIncome = IndemnityPaymentIncomeEnum.TEMPORARIA,
                         PremiumPayment = new PersonPremiumPayment
                         {
-                            PaymentMethod = PaymentMethodPersonEnum.DEBITO_CONTA,// Existe o campo FORMA_PAGTO, porém é string
-                            Frequency = FrequencyEnum.DIARIA,// Existe uma frenquencia no campo VALOR, mas esta dentro da string
-                            premiumTax = ""//Deixar fixo vazio ?
+                            PaymentMethod = PaymentMethodPersonEnum.CARTAO_CREDITO,
+                            Frequency = FrequencyEnum.DIARIA,
+                            premiumTax = ""
                         },
                         MinimunRequirements = new PersonMinimunRequirements
                         {
-                            ContractingType = ContractingTypeEnum.COLETIVO,//Deixar fixo COLETIVO ?
-                            contractingMinRequirement = ""//Deixar fixo vazio ?
+                            ContractingType = ContractingTypeEnum.COLETIVO,
+                            contractingMinRequirement = ""
                         },
-                        TargetAudience = TargetAudiencePersonEnum.PESSOA_NATURAL //Deixar fixo PESSOA_NATURAL ?
+                        TargetAudience = TargetAudiencePersonEnum.PESSOA_NATURAL
 
                     }) ;
                     
@@ -124,6 +130,41 @@ namespace Caixa.OpenInsurence.Service.Services
             {
                 throw ex;
             }
+
+        }
+
+        private List<Coverage> ReturnCoverages(ProdutosVidaPfCompleto produtosVidaPfCompleto)
+        {
+            var response = new List<Coverage>();
+
+            if (produtosVidaPfCompleto.COB_MORTE_ACIDENTAL == "S")
+            {
+                response.Add(new Coverage
+                {
+                    CoverageType = CoverageEnum.MORTE_ACIDENTAL,
+                    CoverageOthers = "",
+                    coverageAttributes = new PersonCoverageAttributes()
+                });
+            }
+
+            if (produtosVidaPfCompleto.COB_INVAL_PERMA_TOTAL_PARC_ACIDENTE == "S")
+            {
+                response.Add(new Coverage
+                {
+                    CoverageType = CoverageEnum.INCAPACIDADE_TOTAL_ACIDENTE,
+                    CoverageOthers = "",
+                    coverageAttributes = new PersonCoverageAttributes()
+                });
+
+                response.Add(new Coverage
+                {
+                    CoverageType = CoverageEnum.INCAPACIDADE_PARCIAL_ACIDENTE,
+                    CoverageOthers = "",
+                    coverageAttributes = new PersonCoverageAttributes()
+                });
+            }
+
+            return response;
 
         }
     }

@@ -9,5 +9,10 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
         public string Name { get; set; }
         public string CnpjNumber { get; set; }
         public List<LifePensionProduct> products { get; set; }
+
+        public LifePensionCompany()
+        {
+            products = new List<LifePensionProduct>();
+        }
     }
 }

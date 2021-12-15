@@ -7,10 +7,28 @@ using System.Text;
 namespace Caixa.OpenInsurence.Model.Api.LifePension
 {
     public class LifePensionResponse
-    {
-        public string RequestTime { get; set; }
-        public List<LifePensionBrand> Brand { get; set; }
+    {        
+        public LifePensionBrand Brand { get; set; }
         public LinksPaginated LinksPaginated { get; set; }
         public MetaPaginated MetaPaginated { get; set; }
+
+        public LifePensionResponse(LifePensionResponse response)
+        {
+            Brand = response.Brand;
+
+            LinksPaginated = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/life-pension");
+
+            MetaPaginated = response.MetaPaginated;
+
+        }
+
+        public LifePensionResponse()
+        {
+            Brand = new LifePensionBrand();
+
+            LinksPaginated = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/life-pension");
+
+            MetaPaginated = new MetaPaginated();
+        }
     }
 }

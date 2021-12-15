@@ -43,6 +43,7 @@ namespace Caixa.OpenInsurence.Channels.Api
             services.AddScoped<IChannelsService, ChannelsService>();
             services.AddScoped<IPensionPlansService, PensionPlansService>();
             services.AddScoped<IPersonService, PersonService>();
+            services.AddScoped<ILifePensionService, LifePensionService>();
             services.AddScoped<IDatabaseService, DatabaseService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ITokenConfigManager, TokenConfigManager>();

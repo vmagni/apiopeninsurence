@@ -8,5 +8,11 @@ namespace Caixa.OpenInsurence.Model.Data.LifePension
     {
         public LifePensionLoading LoadingAntecipated { get; set; }
         public LifePensionLoading LoadingLate { get; set; }
+
+        public LifePensionCosts()
+        {
+            LoadingAntecipated = new LifePensionLoading();
+            LoadingLate = new LifePensionLoading();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace Caixa.OpenInsurence.Service.Services
         {    
             try
             {
-                var responseServiceCaixa = await _databaseService.GetProdutosPrevidenciaCompleto();
+                var responseServiceCaixa = await _databaseService.GetProdutosPrevidenciaNovosFundos();
 
     
                 PensionPlanResponse response = new PensionPlanResponse();

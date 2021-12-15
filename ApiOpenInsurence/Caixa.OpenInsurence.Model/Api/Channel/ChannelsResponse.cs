@@ -25,7 +25,7 @@ namespace Caixa.OpenInsurence.Model.Api
         {
             Data = response.Data;
 
-            Links = new LinksPaginated();
+            Links = new LinksPaginated("https://api.seguradora.com.br/open-insurance/products-services/v1/channels");
 
             Meta = response.Meta;
 
