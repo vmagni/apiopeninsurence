@@ -10,7 +10,7 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
 {
     public class BranchService
     {
-        public ServicesEnum Type { get; set; }
+        public ChannelServicesEnum Type { get; set; }
         public string Name { get => Name; set => Name = Type.ToString(); }
         public int Code { get => Code; set => Code = (int)Type; }
     }

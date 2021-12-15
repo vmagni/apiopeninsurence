@@ -19,7 +19,6 @@ namespace Caixa.OpenInsurence.Service.Services
     public class ChannelsService : IChannelsService
     {
         private readonly IDatabaseService _databaseService;
-        private readonly Utils utilsServices = new Utils();
         public ChannelsService(IDatabaseService databaseService)
         {
             _databaseService = databaseService;
@@ -28,7 +27,7 @@ namespace Caixa.OpenInsurence.Service.Services
         public async Task<ValidaResponseDTO> GetBranches(ApiRequest request)
         {
             var responseServiceCaixa = await _databaseService.GetAgenciasCaixa();        
-            var brachesGroupedBy = responseServiceCaixa.dados.GroupBy(x => x.CNPJ).ToList();
+            var brachesGroupedBy = responseServiceCaixa.dados.Take(10).GroupBy(x => x.CNPJ).ToList();
 
             BranchChannelResponse response = new BranchChannelResponse();
             int count = 0;
@@ -62,7 +61,7 @@ namespace Caixa.OpenInsurence.Service.Services
                     branchUnity.Identification.Name = branch.NOME_AGENCIA;
                     branchUnity.Identification.Code = null;
                     branchUnity.Identification.CheckDigit = 0;
-                    branchUnity.Identification.Type = BranchChannelTypeEnum.AGENCIA;
+                    branchUnity.Identification.Type = (BranchChannelTypeEnum)Int32.Parse(branch.TIPO);
 
                     //Phones
                     branchUnity.Phones = new List<BranchPhone>();
@@ -91,9 +90,8 @@ namespace Caixa.OpenInsurence.Service.Services
                     //Services
                     branchUnity.Services = new List<ChannelService>();
                     ChannelService service = new ChannelService();
-                    service.Type = ServicesEnum.OUVIDORIA_SOLUCAO_EVENTUAIS_DIVERGENCIAS;
-                    service.Code = (int)ServicesEnum.OUVIDORIA_SOLUCAO_EVENTUAIS_DIVERGENCIAS;
-                    service.Name = ServicesEnum.OUVIDORIA_SOLUCAO_EVENTUAIS_DIVERGENCIAS.ToString();
+                    service.Code = 99;
+                    service.Name = branch.SERVIÇOS;
                     branchUnity.Services.Add(service);
 
                     company.Branches.Add(branchUnity);
@@ -142,7 +140,8 @@ namespace Caixa.OpenInsurence.Service.Services
             {
                 count++;
                 PhoneChannel phoneChannel = new PhoneChannel();
-                phoneChannel.Identification.Type = utilsServices.GetEnumValueFromDescription<PhoneChannelTypeEnum>(canal.nomeCanal);
+                phoneChannel.Identification.Type = Helpers.GetEnumValueFromDescription<PhoneChannelTypeEnum>(canal.nomeCanal);
+                phoneChannel.Identification.Name = canal.nomeCanal;
                 phoneChannel.Identification.Phones.Add(new PhoneChannelPhone()
                 {
                     AreaCode = "",
@@ -150,9 +149,9 @@ namespace Caixa.OpenInsurence.Service.Services
                     Number = canal.telCanal
                 });
 
-                phoneChannel.Services.Type = ServicesEnum.ATENDIMENTO_AO_CLIENTE;
-                phoneChannel.Services.Name = ServicesEnum.ATENDIMENTO_AO_CLIENTE.ToString();
-                phoneChannel.Services.Code = (int)ServicesEnum.ATENDIMENTO_AO_CLIENTE;
+                phoneChannel.Services.Type = ChannelServicesEnum.ATENDIMENTO_AO_CLIENTE;
+                phoneChannel.Services.Name = Helpers.GetEnumDescription(ChannelServicesEnum.ATENDIMENTO_AO_CLIENTE);
+                phoneChannel.Services.Code = (int)ChannelServicesEnum.ATENDIMENTO_AO_CLIENTE;
 
                 phoneChannel.Availability.IsPublicAccessAllowed = true;
                 phoneChannel.Availability.Exception = "";

@@ -9,7 +9,7 @@ namespace Caixa.OpenInsurence.Model.Data.Channel
     public class PhoneChannelServices
     {
         [JsonIgnore]
-        public ServicesEnum Type { get; set; }
+        public ChannelServicesEnum Type { get; set; }
         public string Name { get; set; }
         public int Code { get; set; }
     }
