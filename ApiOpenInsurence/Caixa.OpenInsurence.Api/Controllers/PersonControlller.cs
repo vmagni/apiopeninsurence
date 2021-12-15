@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Caixa.OpenInsurence.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("products-services/v1")]
     public class PersonControlller : ControllerBase
     {
 
@@ -20,7 +20,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         }
 
         [HttpPost]
-        [Route("GetPerson")]
+        [Route("person")]
         [ProducesResponseType(typeof(PersonResponse), 200)] //OK
         [ProducesResponseType(typeof(ResponseError), 400)] //OK
         [ProducesResponseType(typeof(ResponseError), 401)]
@@ -30,7 +30,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         [ProducesResponseType(typeof(ResponseError), 406)]
         [ProducesResponseType(typeof(ResponseError), 429)]
         [ProducesResponseType(typeof(ResponseError), 500)] //OK
-        public async Task<IActionResult> GetPerson([FromBody] ApiRequest request)
+        public async Task<IActionResult> person([FromBody] ApiRequest request)
         {
             try
             {

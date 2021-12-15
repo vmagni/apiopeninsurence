@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Caixa.OpenInsurence.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("products-services/v1")]
     public class LifePensionController : ControllerBase
     {
         private readonly ILifePensionService _lifePensionService;
@@ -18,7 +18,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         }
 
         [HttpPost]
-        [Route("GetLifePension")]
+        [Route("life-pension")]
         [ProducesResponseType(typeof(LifePensionResponse), 200)] //OK
         [ProducesResponseType(typeof(ResponseError), 400)] //OK
         [ProducesResponseType(typeof(ResponseError), 401)]
@@ -28,7 +28,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         [ProducesResponseType(typeof(ResponseError), 406)]
         [ProducesResponseType(typeof(ResponseError), 429)]
         [ProducesResponseType(typeof(ResponseError), 500)] //OK
-        public async Task<IActionResult> GetLifePension([FromBody] ApiRequest request)
+        public async Task<IActionResult> lifePension([FromBody] ApiRequest request)
         {
             try
             {

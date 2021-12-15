@@ -8,7 +8,7 @@ using System;
 namespace Caixa.OpenInsurence.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("products-services/v1")]
     public class PensionPlansController : ControllerBase
     {
         private readonly IPensionPlansService _pensionPlansService;
@@ -19,7 +19,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         }
 
         [HttpPost]
-        [Route("GetPensionPlan")]
+        [Route("pension-plan")]
         [ProducesResponseType(typeof(PensionPlanResponse), 200)] //OK
         [ProducesResponseType(typeof(ResponseError), 400)] //OK
         [ProducesResponseType(typeof(ResponseError), 401)]
@@ -29,7 +29,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         [ProducesResponseType(typeof(ResponseError), 406)]
         [ProducesResponseType(typeof(ResponseError), 429)]
         [ProducesResponseType(typeof(ResponseError), 500)] //OK
-        public async Task<IActionResult> GetPensionPlan([FromBody]ApiRequest request)
+        public async Task<IActionResult> pensionPlan([FromBody]ApiRequest request)
         {
             try
             {
