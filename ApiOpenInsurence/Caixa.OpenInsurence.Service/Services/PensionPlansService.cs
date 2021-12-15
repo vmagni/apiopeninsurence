@@ -156,7 +156,7 @@ namespace Caixa.OpenInsurence.Service.Services
 
                 }
 
-                response.Data.Companies = response.Data.Companies.Skip(4).Take(20).ToList();
+                response.Data.Companies = response.Data.Companies.Take(1).ToList();
 
                 response.MetaPaginated.TotalPages = request.Page;
                 response.MetaPaginated.TotalRecords = request.PageSize;                

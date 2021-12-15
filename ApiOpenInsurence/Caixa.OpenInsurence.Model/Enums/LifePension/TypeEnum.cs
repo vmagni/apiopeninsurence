@@ -17,6 +17,7 @@ namespace Caixa.OpenInsurence.Model.Enums.LifePension
         VAGP, 
         VRSA, 
         VRI, 
-        VDR
+        VDR,
+        OUTROS
     }
 }

@@ -12,7 +12,7 @@ namespace Caixa.OpenInsurence.Model.Data.Person
         public CategoryEnum Category { get; set; }
         public InsuranceModalityEnum InsuranceModality { get; set; }
         public List<Coverage> Coverages { get; set; }
-        public AssistanceTypePersonEnum AssistanceType { get; set; }
+        public List<AssistanceTypePersonEnum> AssistanceType { get; set; }
         public AdditionalPersonEnum Additional { get; set; }
         public List<string> AssistanceTypeOthers { get; set; }
         public List<PersonTermsAndCondition> TermsAndConditions { get; set; }

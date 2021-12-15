@@ -39,6 +39,7 @@ namespace Caixa.OpenInsurence.Service.Services
                 foreach (var product in dados)
                 {
                     var converages = ReturnCoverages(product);
+                    var assistanceType = ReturnAssystanceTypes(product);
 
                     response.Brand.companies.PersonProducts.Add(new PersonProduct
                     {
@@ -47,7 +48,7 @@ namespace Caixa.OpenInsurence.Service.Services
                         Category = CategoryEnum.TRADICIONAL,
                         InsuranceModality = InsuranceModalityEnum.FUNERAL,
                         Coverages = converages,
-                        AssistanceType = AssistanceTypePersonEnum.FUNERAL,//Deixar fixo sempre Funeral ?
+                        AssistanceType = assistanceType,
                         Additional = product.SERV_SORTEIOS == "S" ? AdditionalPersonEnum.SORTEIO : AdditionalPersonEnum.NAO_HA,
                         AssistanceTypeOthers = new List<string>(),
                         TermsAndConditions = new List<PersonTermsAndCondition> { new PersonTermsAndCondition 
@@ -163,6 +164,62 @@ namespace Caixa.OpenInsurence.Service.Services
                     coverageAttributes = new PersonCoverageAttributes()
                 });
             }
+
+            return response;
+
+        }
+
+        private List<AssistanceTypePersonEnum> ReturnAssystanceTypes(ProdutosVidaPfCompleto produtosVidaPfCompleto)
+        {
+            var response = new List<AssistanceTypePersonEnum>();
+
+            if (produtosVidaPfCompleto.SERV_CHECKUPLAR == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.ENCANADOR);
+            }
+
+            if (produtosVidaPfCompleto.SERV_RECOLOCA_PROFISSIONAL == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.RECOLOCACAO_PROFISSIONAL);
+            }
+
+            if (produtosVidaPfCompleto.SERV_ASSITENCIA_FUNERAL_FAMILIAR == "S" 
+                || produtosVidaPfCompleto.SERV_ASSIST_FUNERAL_INDIVIDUAL == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.FUNERAL);
+            }
+
+            if (produtosVidaPfCompleto.SERV_ASSIST_MEDICAMENTO == "S" 
+                || produtosVidaPfCompleto.SERV_ASSIST_FARMACIA == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.DESCONTO_FARMACIAS_MEDICAMENTOS);
+            }
+
+            if (produtosVidaPfCompleto.SERV_MEDICA_GRATIS == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.MEDICA_ACIDENTE_DOENCA);
+            }
+
+            if (produtosVidaPfCompleto.SERV_ORIENTA_NUTRICIONAL == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.ORIENTACAO_NUTRICIONAL);
+            }
+
+            if (produtosVidaPfCompleto.SERV_ORIENTA_EDUCACIONAL == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.EDUCACIONAL);
+            }
+
+            if (produtosVidaPfCompleto.SERV_HELPDESK == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.HELP_LINE);
+            }
+
+            if (produtosVidaPfCompleto.SERV_CESTA_BASICA == "S")
+            {
+                response.Add(AssistanceTypePersonEnum.CESTA_BASICA);
+            }
+
 
             return response;
 

@@ -29,6 +29,7 @@ namespace Caixa.OpenInsurence.Api.Controllers
         [ProducesResponseType(typeof(ResponseError), 405)]
         [ProducesResponseType(typeof(ResponseError), 406)]
         [ProducesResponseType(typeof(ResponseError), 429)]
+        [ProducesResponseType(typeof(ResponseError), 500)] //OK
         public async Task<IActionResult> GetPerson([FromBody] ApiRequest request)
         {
             try
